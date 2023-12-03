@@ -7,13 +7,7 @@ package Builder;
 /**
  *
  * @author emalo
- * @param <MMedico>
  */
-public class BuilderMedico<MMedico> extends Builder{
-
-    @Override
-    public void CrearModelo() {
-        
-    }
+public class FModelos {
     
 }
