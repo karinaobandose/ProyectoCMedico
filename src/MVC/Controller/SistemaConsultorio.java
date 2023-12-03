@@ -16,6 +16,7 @@ public class SistemaConsultorio extends javax.swing.JFrame {
 
     private ConsultarMedicos consultarMedicos;
     private RegistrarMedicos registrarMedicos;
+    private RegistrarPacientes registrarPacientes;
 
     /**
      * Creates new form SistemaConsultorio
@@ -26,9 +27,11 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         consultarMedicos = new ConsultarMedicos();
         registrarMedicos = new RegistrarMedicos();
+        registrarPacientes = new RegistrarPacientes();
 
         desktopPane.add(this.consultarMedicos);
         desktopPane.add(this.registrarMedicos);
+        desktopPane.add(this.registrarPacientes);
     }
    
 
@@ -60,6 +63,8 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         miRegistrarM = new javax.swing.JMenuItem();
         miConsultarM = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        miRegistrarP = new javax.swing.JMenuItem();
+        miConsultarP = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -147,6 +152,18 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         menuBar.add(jMenu1);
 
         jMenu2.setText("Pacientes");
+
+        miRegistrarP.setText("Gestionar Pacientes");
+        miRegistrarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miRegistrarPActionPerformed(evt);
+            }
+        });
+        jMenu2.add(miRegistrarP);
+
+        miConsultarP.setText("Consultar Pacientes");
+        jMenu2.add(miConsultarP);
+
         menuBar.add(jMenu2);
 
         jMenu3.setText("Citas");
@@ -182,6 +199,10 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private void miConsultarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarMActionPerformed
         consultarMedicos.setVisible(true);
     }//GEN-LAST:event_miConsultarMActionPerformed
+
+    private void miRegistrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRegistrarPActionPerformed
+        registrarPacientes.setVisible(true);
+    }//GEN-LAST:event_miRegistrarPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,7 +256,9 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miConsultarM;
+    private javax.swing.JMenuItem miConsultarP;
     private javax.swing.JMenuItem miRegistrarM;
+    private javax.swing.JMenuItem miRegistrarP;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;

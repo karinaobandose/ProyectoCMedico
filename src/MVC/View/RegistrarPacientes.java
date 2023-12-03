@@ -27,18 +27,18 @@ public class RegistrarPacientes extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblCedulaM = new javax.swing.JLabel();
-        txtCedulaM = new javax.swing.JTextField();
-        lblNombreM = new javax.swing.JLabel();
-        txtNombreM = new javax.swing.JTextField();
-        lblFechaM = new javax.swing.JLabel();
-        txtFechaM = new javax.swing.JTextField();
-        lblTelefonoM = new javax.swing.JLabel();
-        txtTelefonoM = new javax.swing.JTextField();
-        lblCodigoColegioM = new javax.swing.JLabel();
-        txtCodigoColegioM = new javax.swing.JTextField();
-        lblCorreoM = new javax.swing.JLabel();
-        txtCorreoM = new javax.swing.JTextField();
+        lblCedulaP = new javax.swing.JLabel();
+        txtCedulaP = new javax.swing.JTextField();
+        lblNombreP = new javax.swing.JLabel();
+        txtNombreP = new javax.swing.JTextField();
+        lblFechaP = new javax.swing.JLabel();
+        txtFechaP = new javax.swing.JTextField();
+        lblTelefonoP = new javax.swing.JLabel();
+        txtTelefonoP = new javax.swing.JTextField();
+        lblEdadActualP = new javax.swing.JLabel();
+        txtEdadActualP = new javax.swing.JTextField();
+        lblCorreoP = new javax.swing.JLabel();
+        txtCorreoP = new javax.swing.JTextField();
         lblLogoM = new javax.swing.JLabel();
         btnCrear = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -53,29 +53,35 @@ public class RegistrarPacientes extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        lblCedulaM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCedulaM.setForeground(new java.awt.Color(255, 255, 255));
-        lblCedulaM.setText("Cédula");
+        lblCedulaP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCedulaP.setForeground(new java.awt.Color(255, 255, 255));
+        lblCedulaP.setText("Cédula");
 
-        lblNombreM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNombreM.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreM.setText("Nombre completo");
+        lblNombreP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreP.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreP.setText("Nombre completo");
 
-        lblFechaM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblFechaM.setForeground(new java.awt.Color(255, 255, 255));
-        lblFechaM.setText("Fecha de Nacimiento");
+        lblFechaP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblFechaP.setForeground(new java.awt.Color(255, 255, 255));
+        lblFechaP.setText("Fecha de Nacimiento");
 
-        lblTelefonoM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblTelefonoM.setForeground(new java.awt.Color(255, 255, 255));
-        lblTelefonoM.setText("Teléfono");
+        lblTelefonoP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTelefonoP.setForeground(new java.awt.Color(255, 255, 255));
+        lblTelefonoP.setText("Teléfono");
 
-        lblCodigoColegioM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCodigoColegioM.setForeground(new java.awt.Color(255, 255, 255));
-        lblCodigoColegioM.setText("Código de colegio");
+        lblEdadActualP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEdadActualP.setForeground(new java.awt.Color(255, 255, 255));
+        lblEdadActualP.setText("Edad actual");
 
-        lblCorreoM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCorreoM.setForeground(new java.awt.Color(255, 255, 255));
-        lblCorreoM.setText("Correo electrónico");
+        txtEdadActualP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEdadActualPActionPerformed(evt);
+            }
+        });
+
+        lblCorreoP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCorreoP.setForeground(new java.awt.Color(255, 255, 255));
+        lblCorreoP.setText("Correo electrónico");
 
         lblLogoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/logo2.jpg"))); // NOI18N
 
@@ -92,35 +98,35 @@ public class RegistrarPacientes extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(183, 183, 183)
                         .addComponent(lblLogoM))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(13, 13, 13)
+                                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(30, 30, 30)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCedulaM, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lblFechaM)
-                                        .addComponent(lblNombreM)
-                                        .addComponent(txtNombreM, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                        .addComponent(txtFechaM)
-                                        .addComponent(txtCedulaM)))
-                                .addGap(46, 46, 46)
+                                    .addComponent(lblCedulaP, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblFechaP)
+                                    .addComponent(lblNombreP)
+                                    .addComponent(txtFechaP, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCedulaP, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblCorreoM)
-                                    .addComponent(txtCorreoM)
-                                    .addComponent(lblCodigoColegioM)
-                                    .addComponent(txtCodigoColegioM)
-                                    .addComponent(lblTelefonoM)
-                                    .addComponent(txtTelefonoM, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                                    .addComponent(lblCorreoP)
+                                    .addComponent(txtCorreoP)
+                                    .addComponent(lblEdadActualP)
+                                    .addComponent(lblTelefonoP)
+                                    .addComponent(txtTelefonoP, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtEdadActualP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(43, 43, 43))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,38 +134,38 @@ public class RegistrarPacientes extends javax.swing.JInternalFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCedulaM)
+                        .addComponent(lblCedulaP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCedulaM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCedulaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblNombreM)
+                        .addComponent(lblNombreP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombreM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblFechaM)
+                        .addComponent(lblFechaP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFechaM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFechaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTelefonoM)
+                        .addComponent(lblTelefonoP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTelefonoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTelefonoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblCorreoM)
+                        .addComponent(lblCorreoP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCorreoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCorreoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblCodigoColegioM)
+                        .addComponent(lblEdadActualP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigoColegioM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
+                        .addComponent(txtEdadActualP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(btnCrear)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEditar)
                     .addComponent(btnEliminar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addComponent(lblLogoM)
-                .addGap(28, 28, 28))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,24 +182,28 @@ public class RegistrarPacientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtEdadActualPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActualPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadActualPActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblCedulaM;
-    private javax.swing.JLabel lblCodigoColegioM;
-    private javax.swing.JLabel lblCorreoM;
-    private javax.swing.JLabel lblFechaM;
+    private javax.swing.JLabel lblCedulaP;
+    private javax.swing.JLabel lblCorreoP;
+    private javax.swing.JLabel lblEdadActualP;
+    private javax.swing.JLabel lblFechaP;
     private javax.swing.JLabel lblLogoM;
-    private javax.swing.JLabel lblNombreM;
-    private javax.swing.JLabel lblTelefonoM;
-    private javax.swing.JTextField txtCedulaM;
-    private javax.swing.JTextField txtCodigoColegioM;
-    private javax.swing.JTextField txtCorreoM;
-    private javax.swing.JTextField txtFechaM;
-    private javax.swing.JTextField txtNombreM;
-    private javax.swing.JTextField txtTelefonoM;
+    private javax.swing.JLabel lblNombreP;
+    private javax.swing.JLabel lblTelefonoP;
+    private javax.swing.JTextField txtCedulaP;
+    private javax.swing.JTextField txtCorreoP;
+    private javax.swing.JTextField txtEdadActualP;
+    private javax.swing.JTextField txtFechaP;
+    private javax.swing.JTextField txtNombreP;
+    private javax.swing.JTextField txtTelefonoP;
     // End of variables declaration//GEN-END:variables
 }

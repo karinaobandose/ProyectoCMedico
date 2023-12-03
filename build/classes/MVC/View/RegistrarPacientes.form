@@ -50,44 +50,44 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                          <Component id="btnEditar" min="-2" pref="160" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="btnEliminar" min="-2" pref="160" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
                           <Component id="lblLogoM" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnCrear" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblCedulaM" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblFechaM" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblNombreM" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtNombreM" alignment="0" pref="172" max="32767" attributes="0"/>
-                                          <Component id="txtFechaM" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtCedulaM" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      <Component id="btnEditar" min="-2" pref="160" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="btnEliminar" min="-2" pref="160" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Component id="btnCrear" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblCedulaP" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Component id="lblFechaP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblNombreP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtFechaP" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                      <Component id="txtNombreP" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                      <Component id="txtCedulaP" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="20" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblCorreoM" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtCorreoM" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lblCodigoColegioM" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtCodigoColegioM" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lblTelefonoM" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTelefonoM" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                      <Component id="lblCorreoP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCorreoP" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="lblEdadActualP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTelefonoP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTelefonoP" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="txtEdadActualP" alignment="1" min="-2" pref="172" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="43" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -97,48 +97,48 @@
                   <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblCedulaM" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCedulaP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtCedulaM" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCedulaP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblNombreM" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNombreP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtNombreM" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombreP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblFechaM" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFechaP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtFechaM" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFechaP" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="lblTelefonoM" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTelefonoP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtTelefonoM" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTelefonoP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblCorreoM" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCorreoP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtCorreoM" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCorreoP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblCodigoColegioM" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEdadActualP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtCodigoColegioM" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEdadActualP" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace pref="73" max="32767" attributes="0"/>
                   <Component id="btnCrear" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                       <Component id="btnEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="lblLogoM" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblCedulaM">
+        <Component class="javax.swing.JLabel" name="lblCedulaP">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -149,9 +149,9 @@
             <Property name="text" type="java.lang.String" value="C&#xe9;dula"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCedulaM">
+        <Component class="javax.swing.JTextField" name="txtCedulaP">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblNombreM">
+        <Component class="javax.swing.JLabel" name="lblNombreP">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -162,9 +162,9 @@
             <Property name="text" type="java.lang.String" value="Nombre completo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNombreM">
+        <Component class="javax.swing.JTextField" name="txtNombreP">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblFechaM">
+        <Component class="javax.swing.JLabel" name="lblFechaP">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -175,9 +175,9 @@
             <Property name="text" type="java.lang.String" value="Fecha de Nacimiento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFechaM">
+        <Component class="javax.swing.JTextField" name="txtFechaP">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblTelefonoM">
+        <Component class="javax.swing.JLabel" name="lblTelefonoP">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -188,9 +188,9 @@
             <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTelefonoM">
+        <Component class="javax.swing.JTextField" name="txtTelefonoP">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblCodigoColegioM">
+        <Component class="javax.swing.JLabel" name="lblEdadActualP">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -198,12 +198,15 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="C&#xf3;digo de colegio"/>
+            <Property name="text" type="java.lang.String" value="Edad actual"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCodigoColegioM">
+        <Component class="javax.swing.JTextField" name="txtEdadActualP">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEdadActualPActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblCorreoM">
+        <Component class="javax.swing.JLabel" name="lblCorreoP">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -214,7 +217,7 @@
             <Property name="text" type="java.lang.String" value="Correo electr&#xf3;nico"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCorreoM">
+        <Component class="javax.swing.JTextField" name="txtCorreoP">
         </Component>
         <Component class="javax.swing.JLabel" name="lblLogoM">
           <Properties>
