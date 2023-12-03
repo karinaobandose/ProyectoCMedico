@@ -5,24 +5,24 @@
 package Dao;
 
 import BD.PlatillaBD;
-import DTO.DTOMedico;
+import DTO.DTOPaciente;
+import MVC.Model.MPaciente;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  *
  * @author emalo
  */
-public class MMedicoDAO implements Dao<DTOMedico> {
+public class MPacienteDAO implements Dao<DTOPaciente> {
 
-    private HashMap<String, DTOMedico> ListaMedicos;
-    private static String Tabla = "medicos";
+    private HashMap<String, DTOPaciente> ListaPacientes;
+    private static String Tabla = "pacientes";
     private String columnasInsercion = "";
     private String valoresInsercion = "";
 
-    public MMedicoDAO() {
-        ListaMedicos = new HashMap();
+    public MPacienteDAO() {
+        ListaPacientes = new HashMap();
         AgregarDeBaseDatos();
     }
 
@@ -31,34 +31,34 @@ public class MMedicoDAO implements Dao<DTOMedico> {
         Object[][] Lista = bd.mostrarTodosRegistros(Tabla);
         if (Lista != null) {
             for (Object[] fila : Lista) {
-                DTOMedico DTOMedico = new DTOMedico(fila);
-                ListaMedicos.put(DTOMedico.getNumeroCedula(), DTOMedico);
+                DTOPaciente DTOPaciente = new DTOPaciente(fila);
+                ListaPacientes.put(DTOPaciente.getNumeroCedula(), DTOPaciente);
             }
         }
 
     }
 
     @Override
-    public boolean Agregar(DTOMedico obj, PlatillaBD BaseDatos) {
-        columnasInsercion = "Cedula, Nombre, FechaN, Telefono, Correo, Codigo, Especialidad, Salario";
-        valoresInsercion = "?,?,?,?,?,?,?,?";
+    public boolean Agregar(DTOPaciente obj, PlatillaBD BaseDatos) {
+        columnasInsercion = "Cedula, Nombre, FechaN, Telefono, Correo";
+        valoresInsercion = "?,?,?,?,?";
         if (obj == null) {
             return false;
         }
 
-        Object[] Parametros = {obj.getNumeroCedula(), obj.getNombre(), obj.getFechaNacimiento(), obj.getTelefono(),
-            obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario()};
+        Object[] Parametros = {obj.getNumeroCedula(), obj.getNombre(), obj.getFechaN(), obj.getTelefono(),
+            obj.getCorreo()};
         boolean resultado;
 
         if (Leer(obj.getNumeroCedula(), BaseDatos) == null) {
             resultado = BaseDatos.insertarRegistro(Tabla, columnasInsercion, valoresInsercion, Parametros);
             String x = String.valueOf(obj.getNumeroCedula());
-            ListaMedicos.put(x, obj);
+            ListaPacientes.put(x, obj);
             System.out.println("Registro Agregado correctamente");
             return resultado;
-        } else if (Leer(obj.getNumeroCedula(), BaseDatos) instanceof DTOMedico) {
+        } else if (Leer(obj.getNumeroCedula(), BaseDatos) instanceof DTOPaciente) {
             String x = String.valueOf(obj.getNumeroCedula());
-            ListaMedicos.put(x, obj);
+            ListaPacientes.put(x, obj);
             System.out.println("Registro Agregado correctamente");
             return true;
         } else {
@@ -69,52 +69,51 @@ public class MMedicoDAO implements Dao<DTOMedico> {
     }
 
     @Override
-    public DTOMedico Leer(String Cedula, PlatillaBD BaseDatos) {
+    public DTOPaciente Leer(String Cedula, PlatillaBD BaseDatos) {
         String Condional = "Cedula = ?";
         Object[] Parametros = {Cedula};
         Object[] comprobar = BaseDatos.seleccionarUnRegistro(Tabla, Condional, Parametros);
         if (comprobar != null) {
-            return this.ListaMedicos.get(Cedula);
+            return this.ListaPacientes.get(Cedula);
 
         }
         return null;
     }
 
     @Override
-    public ArrayList<DTOMedico> LeerTodo(PlatillaBD BaseDatos) {
-        return new ArrayList<>(ListaMedicos.values());
+    public ArrayList<DTOPaciente> LeerTodo(PlatillaBD BaseDatos) {
+        return new ArrayList<>(ListaPacientes.values());
     }
 
     @Override
-    public boolean Actualizar(DTOMedico obj, PlatillaBD BaseDatos) {
-        String setValuesActualizar = "Nombre = ?, FechaN = ?, Telefono = ?, Correo = ?, Codigo = ?, Especialidad = ?, Salario = ?";
+    public boolean Actualizar(DTOPaciente obj, PlatillaBD BaseDatos) {
+        String setValuesActualizar = "Nombre = ?, FechaN = ?, Telefono = ?, Correo = ?";
         String condicionActualizar = "Cedula = ?";
-        Object[] Parametros = {obj.getNombre(), obj.getFechaNacimiento(), obj.getTelefono(),
-             obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario(), obj.getNumeroCedula()};
+        Object[] Parametros = {obj.getNombre(), obj.getFechaN(), obj.getTelefono(),
+            obj.getCorreo(), obj.getNumeroCedula()};
         boolean resultado = BaseDatos.actualizarRegistro(Tabla, setValuesActualizar, condicionActualizar, Parametros);
 //        return this.Agregar(obj);
         return resultado;
     }
 
     @Override
-    public boolean Eliminar(DTOMedico obj, PlatillaBD BaseDatos) {
+    public boolean Eliminar(DTOPaciente obj, PlatillaBD BaseDatos) {
         String condicionEliminar = "Cedula = ?";
         Object[] Parametro = {obj.getNumeroCedula()};
         String x = String.valueOf(obj.getNumeroCedula());
-        System.out.println(ListaMedicos.size());
-        
+        System.out.println(ListaPacientes.size());
+
 //        if (ListaMedicos.size()<1) {
 //            
 //        }
         boolean resultado = BaseDatos.eliminarRegistro(Tabla, condicionEliminar, Parametro);
         if (resultado) {
-            ListaMedicos.remove(x);
+            ListaPacientes.remove(x);
             return true;
-        }else{
+        } else {
             return false;
         }
-        
-        
+
     }
 
 }

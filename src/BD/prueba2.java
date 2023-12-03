@@ -5,11 +5,16 @@
 package BD;
 
 import DTO.DTOMedico;
+import DTO.DTOPaciente;
 import Dao.MMedicoDAO;
+import Dao.MPacienteDAO;
 import MVC.Controller.CMedico;
+import MVC.Controller.CPaciente;
 import MVC.Model.MMedico;
+import MVC.Model.MPaciente;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -33,9 +38,22 @@ public class prueba2 {
 
         Scanner scanner = new Scanner(System.in);
 
-        MMedicoDAO Dao = new MMedicoDAO();
+        MPacienteDAO Dao = new MPacienteDAO();
 
-        CMedico Controller = new CMedico(Dao);
+        CPaciente Controller = new CPaciente(Dao);
+        
+        ArrayList<DTOPaciente> x = Controller.LeerTodoS(bd);
+                for (DTOPaciente mMedico : x) {
+                    LocalDate xxx = LocalDate.parse(String.valueOf(mMedico.getFechaN()));
+                    int xx = Period.between(xxx, LocalDate.now()).getYears();
+                    System.out.print("Cedula: " + mMedico.getNumeroCedula() + " / ");
+                    System.out.print("Nombre: " + mMedico.getNombre()+ " / ");
+                    System.out.print("Fecha Nacimiento: " + xx+ " / ");
+                    System.out.print("Telefono: " + mMedico.getTelefono()+ " / ");
+                    System.out.print("Correo: " + mMedico.getCorreo()+ " / ");
+                    System.out.println("");
+                    System.out.println("-----------------------");
+                }
 
         int numeroIngresado;
 
@@ -49,26 +67,21 @@ public class prueba2 {
                 Date fechaDate = java.sql.Date.valueOf(fechaLocalDate);
                 System.out.println(fechaDate);
 
-                MMedico medico = new MMedico("4141", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com", 5650, "Doctor", 500.79);
-                MMedico medico1 = new MMedico("234", "Perez", fechaDate, "61689514", "Emmanuel@asd.com", 5650, "Doctor", 500.79);
-                MMedico medico2 = new MMedico("456", "Maria", fechaDate, "61689514", "Emmanuel@asd.com", 5650, "Doctor", 500.79);
+                MPaciente medico = new MPaciente("4141", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com");
+                MPaciente medico1 = new MPaciente("234", "Perez", fechaDate, "61689514", "Emmanuel@asd.com");
+                MPaciente medico2 = new MPaciente("456", "Maria", fechaDate, "61689514", "Emmanuel@asd.com");
 
                 System.out.println(medico.EstaCompleto());
 
                 Controller.Agregar(medico, bd);
-                Controller.Agregar(medico1, bd);
-                Controller.Agregar(medico2, bd);
-
-                ArrayList<DTOMedico> x = Controller.LeerTodoS(bd);
-                for (DTOMedico mMedico : x) {
+//                Controller.Agregar(medico1, bd);
+                x = Controller.LeerTodoS(bd);
+                for (DTOPaciente mMedico : x) {
                     System.out.println("Cedula: " + mMedico.getNumeroCedula());
                     System.out.println("Nombre: " + mMedico.getNombre());
-                    System.out.println("Fecha Nacimiento: " + mMedico.getFechaNacimiento());
+                    System.out.println("Fecha Nacimiento: " + mMedico.getFechaN());
                     System.out.println("Telefono: " + mMedico.getTelefono());
                     System.out.println("Correo: " + mMedico.getCorreo());
-                    System.out.println("Codigo: " + mMedico.getCodigo());
-                    System.out.println("Especialidad: " + mMedico.getEspecialidad());
-                    System.out.println("Salario: " + mMedico.getSalario());
                     System.out.println("-----------------------");
                 }
             } else if (numeroIngresado == 99) {
@@ -77,7 +90,7 @@ public class prueba2 {
             } else if (numeroIngresado == 3) {
                 System.out.print("cedula");
                 String x1 = scanner.next();
-                MMedico temp = Controller.Leer(x1, bd);
+                MPaciente temp = Controller.Leer(x1, bd);
                 Controller.Eliminar(temp, bd);
             } else if (numeroIngresado == 2) {
                 System.out.print("cedula");
@@ -91,14 +104,9 @@ public class prueba2 {
                 System.out.print("correo");
                 String x5 = scanner.next();
                 System.out.print("codigo");
-                Integer x6 = scanner.nextInt();
-                System.out.print("especialidad");
-                String x7 = scanner.next();
-                System.out.print("salario");
-                double x8 = scanner.nextDouble();
 
-                MMedico temp = Controller.Leer(x1, bd);
-                Controller.Eliminar(temp, bd);
+                MPaciente temp = Controller.Leer(x1, bd);
+//                Controller.Eliminar(temp, bd);
 
                 if (x1.isEmpty()) {
                     x1 = temp.getNumeroCedula();
@@ -107,24 +115,24 @@ public class prueba2 {
                     x2 = temp.getNombre();
                 }
                 if (x3.isEmpty()) {
-                    x3 = String.valueOf(temp.getFechaNacimiento());
+                    x3 = String.valueOf(temp.getFechaN());
                 }
                 if (x4.isEmpty()) {
                     x4 = temp.getTelefono();
                 }
                 if (x5.isEmpty()) {
                     x5 = temp.getCorreo();
-                }
-                if (x6.equals(null)) {
-                    x6 = temp.getCodigo();
-                }
-                if (!x7.isEmpty()) {
-                    x7 = temp.getEspecialidad();
+//                }
+//                if (x6.equals(null)) {
+//                    x6 = temp.getCodigo();
+//                }
+//                if (!x7.isEmpty()) {
+//                    x7 = temp.getEspecialidad();
                 }
 
                 Date fechaDate = java.sql.Date.valueOf(x3);
 
-                MMedico tempobjecto = new MMedico(x1, x2, fechaDate, x4, x5, x6, x7, x8);
+                MPaciente tempobjecto = new MPaciente(x1, x2, fechaDate, x4, x5);
 
                 Controller.Actualizar(tempobjecto, bd);
 

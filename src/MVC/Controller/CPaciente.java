@@ -5,9 +5,9 @@
 package MVC.Controller;
 
 import BD.PlatillaBD;
-import DTO.DTOMedico;
+import DTO.DTOPaciente;
 import Dao.Dao;
-import MVC.Model.MMedico;
+import MVC.Model.MPaciente;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,25 +15,26 @@ import java.util.List;
  *
  * @author emalo
  */
-public class CMedico implements Controlador<MMedico> {
+public class CPaciente implements Controlador<MPaciente> {
 
 //    private View view;
     private Dao dao;
 
-    public CMedico(Dao dao) {
+    public CPaciente(Dao dao) {
 //        this.view = view;
         this.dao = dao;
     }
 
     @Override
-    public boolean Agregar(MMedico obj, PlatillaBD BaseDatos) {
+    public boolean Agregar(MPaciente obj, PlatillaBD BaseDatos) {
         if (dao.Leer(obj.getNumeroCedula(), BaseDatos) != null) {
 //            view.displayMessage("Usuario ya existente, no se agregó");
             System.out.println("Ya existe");
             return false;
         } else {
-            DTOMedico DTOMedico = new DTOMedico(obj.getNumeroCedula(), obj.getNombre(), obj.getFechaNacimiento(), obj.getTelefono(),
-                    obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario());
+            DTOPaciente DTOMedico = new DTOPaciente(
+                    obj.getNumeroCedula(),obj.getNombre(),
+                    obj.getFechaN(),obj.getTelefono(),obj.getCorreo());
             if (dao.Agregar(DTOMedico, BaseDatos)) {
 //                view.displayMessage("Usuario gregado correctamente");
                 System.out.println("Agregado");
@@ -48,26 +49,27 @@ public class CMedico implements Controlador<MMedico> {
     }
 
     @Override
-    public MMedico Leer(String Cedula, PlatillaBD BaseDatos) {
-        DTOMedico DTOMedico = (DTOMedico) dao.Leer(Cedula, BaseDatos);
-        if (DTOMedico == null) {
+    public MPaciente Leer(String Cedula, PlatillaBD BaseDatos) {
+        DTOPaciente obj = (DTOPaciente) dao.Leer(Cedula, BaseDatos);
+        if (obj == null) {
 //            view.displayMessage("Usuario no encontrado");
             System.out.println("Error");
             return null;
         } else {
-            MMedico MMedico = new MMedico(DTOMedico.getNumeroCedula(), DTOMedico.getNombre(), DTOMedico.getFechaNacimiento(), DTOMedico.getTelefono(),
-                    DTOMedico.getCorreo(), DTOMedico.getCodigo(), DTOMedico.getEspecialidad(), DTOMedico.getSalario());
+            MPaciente MPaciente = new MPaciente(obj.getNumeroCedula(),obj.getNombre(),
+                    obj.getFechaN(),obj.getTelefono(),obj.getCorreo());
+            if (dao.Agregar(obj, BaseDatos));
             System.out.println("Se mostrara");
 
 //            view.display(user);
-            return MMedico;
+            return MPaciente;
         }
     }
 
     @Override
-    public ArrayList<MMedico> LeerTodo(PlatillaBD BaseDatos) {
-        ArrayList<MMedico> DTOMedico = dao.LeerTodo(BaseDatos);
-        if (DTOMedico == null) {
+    public ArrayList<MPaciente> LeerTodo(PlatillaBD BaseDatos) {
+        ArrayList<MPaciente> obj = dao.LeerTodo(BaseDatos);
+        if (obj == null) {
 //            view.displayMessage("Usuario no encontrado");
             System.out.println("Error");
             return null;
@@ -75,13 +77,13 @@ public class CMedico implements Controlador<MMedico> {
             System.out.println("Se mostrara");
 
 //            view.display(user);
-            return DTOMedico;
+            return obj;
         }
     }
 
-    public ArrayList<DTOMedico> LeerTodoS(PlatillaBD BaseDatos) {
-        ArrayList<DTOMedico> DTOMedico = dao.LeerTodo(BaseDatos);
-        if (DTOMedico == null) {
+    public ArrayList<DTOPaciente> LeerTodoS(PlatillaBD BaseDatos) {
+        ArrayList<DTOPaciente> obj = dao.LeerTodo(BaseDatos);
+        if (obj == null) {
 //            view.displayMessage("Usuario no encontrado");
             System.out.println("Error");
             return null;
@@ -89,29 +91,28 @@ public class CMedico implements Controlador<MMedico> {
             System.out.println("Se mostrara");
 
 //            view.display(user);
-            return DTOMedico;
+            return obj;
         }
     }
 
-    private ArrayList<DTOMedico> PasarADTOMedico(List<MMedico> MMedico) {
-        ArrayList<DTOMedico> lista = new ArrayList<DTOMedico>();
-        for (MMedico mMedico : MMedico) {
-            DTOMedico x = new DTOMedico(mMedico.getNumeroCedula(), mMedico.getNombre(), mMedico.getFechaNacimiento(),
-                    mMedico.getTelefono(), mMedico.getCorreo(), mMedico.getCodigo(), mMedico.getEspecialidad(),
-                    mMedico.getSalario());
+    private ArrayList<DTOPaciente> PasarADTOMedico(List<MPaciente> MPaciente) {
+        ArrayList<DTOPaciente> lista = new ArrayList<DTOPaciente>();
+        for (MPaciente obj : MPaciente) {
+            DTOPaciente x = new DTOPaciente(obj.getNumeroCedula(),obj.getNombre(),
+                    obj.getFechaN(),obj.getTelefono(),obj.getCorreo());
             lista.add(x);
         }
         return lista;
     }
 
     @Override
-    public boolean Actualizar(MMedico obj, PlatillaBD BaseDatos) {
+    public boolean Actualizar(MPaciente obj, PlatillaBD BaseDatos) {
         if (dao.Leer(obj.getNumeroCedula(), BaseDatos) != null) {
 //            view.displayMessage("Usuario ya existente, no se agregó");
-            DTOMedico DTOMedico = new DTOMedico(obj.getNumeroCedula(), obj.getNombre(), obj.getFechaNacimiento(), obj.getTelefono(),
-                    obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario());
+            DTOPaciente DTOPaciente = new DTOPaciente(obj.getNumeroCedula(),obj.getNombre(),
+                    obj.getFechaN(),obj.getTelefono(),obj.getCorreo());
 
-            if (dao.Actualizar(DTOMedico, BaseDatos)) {
+            if (dao.Actualizar(DTOPaciente, BaseDatos)) {
 //                view.displayMessage("Usuario gregado correctamente");
                 System.out.println("actualizado");
                 return true;
@@ -129,12 +130,15 @@ public class CMedico implements Controlador<MMedico> {
     }
 
     @Override
-    public boolean Eliminar(MMedico obj, PlatillaBD BaseDatos) {
+    public boolean Eliminar(MPaciente obj, PlatillaBD BaseDatos) {
         if (dao.Leer(obj.getNumeroCedula(), BaseDatos) != null) {
-            DTOMedico DTOMedico = new DTOMedico(obj.getNumeroCedula(), obj.getNombre(), obj.getFechaNacimiento(), obj.getTelefono(),
-                    obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario());
+            DTOPaciente DTOPaciente = new DTOPaciente(obj.getNumeroCedula(),obj.getNombre(),
+                    obj.getFechaN(),obj.getTelefono(),obj.getCorreo());
+            
+//            DTOMedico DTOMedico = new DTOMedico(obj.getNumeroCedula(), obj.getNombre(), obj.getFechaNacimiento(), obj.getTelefono(),
+//                    obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario());
 
-            if (dao.Eliminar(DTOMedico, BaseDatos)) {
+            if (dao.Eliminar(DTOPaciente, BaseDatos)) {
 //                view.displayMessage("Usuario gregado correctamente");
                 System.out.println("eliminar");
                 return true;
@@ -150,5 +154,4 @@ public class CMedico implements Controlador<MMedico> {
 
         }
     }
-
 }
