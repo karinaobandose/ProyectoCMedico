@@ -2,16 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package MVC.Model;
+package DTO;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 /**
  *
  * @author karin
  */
-public class MMedico implements Model {
+public class DTOMedico {
 
     private String NumeroCedula;
     private String Nombre;
@@ -22,7 +21,7 @@ public class MMedico implements Model {
     private String Especialidad;
     private double Salario;
 
-    public MMedico(String NumeroCedula, String Nombre,
+    public DTOMedico(String NumeroCedula, String Nombre,
             Date FechaNacimiento, String Telefono,
             String Correo, Integer Codigo, String Especialidad, double Salario) {
         this.NumeroCedula = NumeroCedula;
@@ -33,6 +32,17 @@ public class MMedico implements Model {
         this.Codigo = Codigo;
         this.Especialidad = Especialidad;
         this.Salario = Salario;
+    }
+    
+    public DTOMedico(Object[] x) {
+        this.NumeroCedula = String.valueOf(x[1]);
+        this.Nombre = String.valueOf(x[2]);
+        this.FechaNacimiento = java.sql.Date.valueOf(String.valueOf(x[3]));
+        this.Telefono = String.valueOf(x[4]);
+        this.Correo = String.valueOf(x[5]);
+        this.Codigo = Integer.parseInt(String.valueOf(x[6]));
+        this.Especialidad = String.valueOf(x[7]);
+        this.Salario = Double.parseDouble(String.valueOf(x[8]));
     }
 
     public String getNumeroCedula() {
@@ -97,16 +107,6 @@ public class MMedico implements Model {
 
     public void setSalario(double Salario) {
         this.Salario = Salario;
-    }
-
-    @Override
-    public boolean EstaCompleto() {
-        return this.NumeroCedula != null && this.Nombre != null
-                && this.FechaNacimiento != null && this.Telefono != null
-                && this.Correo != null
-                && this.Codigo != null
-                && this.Especialidad != null
-                && (Double) this.Salario != null;
     }
 
 }

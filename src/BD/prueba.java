@@ -36,6 +36,8 @@ public class prueba {
 //        String condicionActualizar = "id = ?";
 //        Object[] parametrosActualizar = {"Poppe", 2}; //Aqui van los parametros los cuales queremos cambiar
 //        actualizarRegistro("prueba", setValuesActualizar, condicionActualizar, parametrosActualizar, bd);
+
+
         // Mostrar todos los registros
 //        Object[][] todosLosRegistros = mostrarTodosRegistros("prueba", bd);
 //        imprimirRegistros(todosLosRegistros);
