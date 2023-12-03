@@ -25,8 +25,8 @@ public class MMedicoDAO implements Dao<DTOMedico> {
         ListaMedicos = new HashMap();
         AgregarDeBaseDatos();
     }
-    
-    private void AgregarDeBaseDatos(){
+
+    private void AgregarDeBaseDatos() {
         PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "emanuel12");
         Object[][] Lista = bd.mostrarTodosRegistros(Tabla);
         if (Lista != null) {
@@ -35,7 +35,7 @@ public class MMedicoDAO implements Dao<DTOMedico> {
                 ListaMedicos.put(DTOMedico.getNumeroCedula(), DTOMedico);
             }
         }
-        
+
     }
 
     @Override
@@ -81,14 +81,34 @@ public class MMedicoDAO implements Dao<DTOMedico> {
 
     @Override
     public boolean Actualizar(DTOMedico obj, PlatillaBD BaseDatos) {
+        String setValuesActualizar = "Nombre = ?, FechaN = ?, Telefono = ?, Correo = ?, Codigo = ?, Especialidad = ?, Salario = ?";
+        String condicionActualizar = "Cedula = ?";
+        Object[] Parametros = {obj.getNombre(), obj.getFechaNacimiento(), obj.getTelefono(),
+             obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario(), obj.getNumeroCedula()};
+        boolean resultado = BaseDatos.actualizarRegistro(Tabla, setValuesActualizar, condicionActualizar, Parametros);
 //        return this.Agregar(obj);
-        return false;
+        return resultado;
     }
 
     @Override
     public boolean Eliminar(DTOMedico obj, PlatillaBD BaseDatos) {
+        String condicionEliminar = "Cedula = ?";
+        Object[] Parametro = {obj.getNumeroCedula()};
         String x = String.valueOf(obj.getNumeroCedula());
-        return ListaMedicos.remove(x) != null;
+        System.out.println(ListaMedicos.size());
+        
+//        if (ListaMedicos.size()<1) {
+//            
+//        }
+        boolean resultado = BaseDatos.eliminarRegistro(Tabla, condicionEliminar, Parametro);
+        if (resultado) {
+            ListaMedicos.remove(x);
+            return true;
+        }else{
+            return false;
+        }
+        
+        
     }
 
 }
