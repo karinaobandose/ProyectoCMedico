@@ -15,16 +15,24 @@ public class DTOUsuario extends DTOMedico {
     private String Usuario;
     private Integer Contrasena;
 
-    public DTOUsuario(String Usuario, int Contrasena, String NumeroCedula, String Nombre, Date FechaNacimiento, String Telefono, String Correo, Integer Codigo, String Especialidad, double Salario) {
+    public DTOUsuario(String NumeroCedula, String Nombre, Date FechaNacimiento, String Telefono, String Correo, Integer Codigo, String Especialidad, double Salario, String Usuario, int Contrasena) {
         super(NumeroCedula, Nombre, FechaNacimiento, Telefono, Correo, Codigo, Especialidad, Salario);
         this.Usuario = Usuario;
         this.Contrasena = Contrasena;
     }
 
+    public DTOUsuario(String NumeroCedula, String Usuario, Integer Contrasena) {
+        super(NumeroCedula);
+        this.Usuario = Usuario;
+        this.Contrasena = Contrasena;
+    }
+    
+    
+
     public DTOUsuario(Object[] x) {
         super(x);
-        this.setUsuario(String.valueOf(x[5]));
-        this.setContrasena(Integer.parseInt(String.valueOf(x[6])));
+        this.setUsuario(String.valueOf(x[9]));
+        this.setContrasena(Integer.parseInt(String.valueOf(x[10])));
     }
 
 //    public DTOUsuario(String Usuario, String Contrasena, String NumeroCedula, String Nombre, Date FechaNacimiento, String Telefono, String Correo, Integer Codigo, String Especialidad, double Salario) {

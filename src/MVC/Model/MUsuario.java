@@ -21,6 +21,14 @@ public class MUsuario extends MMedico{
         this.Contrasena = Contrasena;
     }
 
+    public MUsuario(String NumeroCedula,String Usuario, int Contrasena) {
+        super(NumeroCedula);
+        this.Usuario = Usuario;
+        this.Contrasena = Contrasena;
+    }
+    
+    
+
     public MUsuario(String Usuario, String Contrasena, String NumeroCedula, String Nombre, Date FechaNacimiento, String Telefono, String Correo, Integer Codigo, String Especialidad, double Salario) {
         super(NumeroCedula, Nombre, FechaNacimiento, Telefono, Correo, Codigo, Especialidad, Salario);
         this.Usuario = Usuario;

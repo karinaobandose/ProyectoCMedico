@@ -8,18 +8,22 @@ import DTO.DTOCita;
 import DTO.DTOExpediente;
 import DTO.DTOMedico;
 import DTO.DTOPaciente;
+import DTO.DTOUsuario;
 import Dao.MCietaDAO;
 import Dao.MExpedienteDAO;
 import Dao.MMedicoDAO;
 import Dao.MPacienteDAO;
+import Dao.MUsuarioDAO;
 import MVC.Controller.CCita;
 import MVC.Controller.CExpediente;
 import MVC.Controller.CMedico;
 import MVC.Controller.CPaciente;
+import MVC.Controller.CUsuario;
 import MVC.Model.MCita;
 import MVC.Model.MExpediente;
 import MVC.Model.MMedico;
 import MVC.Model.MPaciente;
+import MVC.Model.MUsuario;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -52,19 +56,25 @@ public class prueba2 {
         MMedicoDAO DaoMedico = new MMedicoDAO();
         MCietaDAO DaoCitas = new MCietaDAO();
         MExpedienteDAO DaoExpediente = new MExpedienteDAO();
+        MUsuarioDAO DaoUsuario = new MUsuarioDAO();
 
         CPaciente ControllerPaciente = new CPaciente(DaoPaciente);
         CMedico ControllerMedico = new CMedico(DaoMedico);
+        CUsuario ControllerUsuario = new CUsuario(DaoUsuario);
         CCita ControllerCita = new CCita(DaoCitas, DaoMedico, DaoPaciente);
         CExpediente ControllerExpediente = new CExpediente(DaoExpediente, DaoMedico);
+        
 
-        ArrayList<DTOExpediente> x = ControllerExpediente.LeerTodoS(bd);
-        for (DTOExpediente mMedico : x) {
-            System.out.print("NumeroExpediente: " + mMedico.getNumeroExpediente()+ " / ");
-            System.out.print("Fecha: " + mMedico.getFecha() + " / ");
-            System.out.print("Hora: " + mMedico.getHora() + " / ");
-            System.out.print("Medico: " + mMedico.getMedico() + " / ");
-            System.out.print("Descripcion: " + mMedico.getDescripcion()+ " / ");
+        ArrayList<DTOUsuario> x = ControllerUsuario.LeerTodoS(bd);
+
+        System.out.println("--------------------------");
+        System.out.println("--------------------------");
+        System.out.println("--------------------------");
+
+        for (DTOUsuario mMedico : x) {
+            System.out.print("Cedula: " + mMedico.getNumeroCedula()+ " / ");
+            System.out.print("Usuario: " + mMedico.getUsuario()+ " / ");
+            System.out.print("Contrasena: " + mMedico.getContrasena()+ " / ");
             System.out.println("");
             System.out.println("-----------------------");
         }
@@ -85,6 +95,7 @@ public class prueba2 {
 
                 MPaciente Paciente = new MPaciente("4141", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com");
                 MMedico medico = new MMedico("985", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com", 5056, "Medico", 1555);
+                MUsuario Usuario = new MUsuario("JK", 12345, "951", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com", 5056, "Medico", 1555);
 //                MPaciente medico1 = new MPaciente("234", "Perez", fechaDate, "61689514", "Emmanuel@asd.com");
 //                MPaciente medico2 = new MPaciente("456", "Maria", fechaDate, "61689514", "Emmanuel@asd.com");
 
@@ -93,7 +104,7 @@ public class prueba2 {
                 MExpediente Expediente = new MExpediente("5650",fechaDate,horaEspecifica,medico.getNumeroCedula(),"Informaicion Delicada");
 
 //                System.out.println(medico.EstaCompleto());
-                ControllerExpediente.Agregar(Expediente, bd);
+                ControllerUsuario.Agregar(Usuario, bd);
 //                Controller.Agregar(medico1, bd);
 
             } else if (numeroIngresado == 99) {
@@ -102,38 +113,38 @@ public class prueba2 {
             } else if (numeroIngresado == 3) {
                 System.out.print("numero");
                 String x1 = scanner.next();
-                MExpediente temp = ControllerExpediente.Leer(x1, bd);
-                ControllerExpediente.Eliminar(temp, bd);
+                MUsuario temp = ControllerUsuario.Leer(x1, bd);
+                ControllerUsuario.Eliminar(temp, bd);
             } else if (numeroIngresado == 2) {
-                System.out.print("asd");
+                System.out.print("Cedula");
                 String id = scanner.next();
-                System.out.print("asd");
+                System.out.print("Usuario");
                 String x1 = scanner.next();
-                System.out.print("nombre");
+                System.out.print("Contrasena");
                 String x2 = scanner.next();
-                System.out.print("fecha");
-                String x3 = scanner.next();
-                System.out.print("tele");
-                String x4 = scanner.next();
-                System.out.print("correo");
+//                System.out.print("fecha");
+//                String x3 = scanner.next();
+//                System.out.print("tele");
+//                String x4 = scanner.next();
+//                System.out.print("correo");
 //                String x5 = scanner.next();
 //                System.out.print("codigo");
 
-                MExpediente temp = ControllerExpediente.Leer(x1, bd);
+                MUsuario temp = ControllerUsuario.Leer(id, bd);
 //                Controller.Eliminar(temp, bd);
 
                 if (x1.isEmpty()) {
-                    x1 = String.valueOf(temp.getFecha());
+                    x1 = String.valueOf(temp.getUsuario());
                 }
                 if (x2.isEmpty()) {
-                    x2 = String.valueOf(temp.getHora());
+                    x2 = String.valueOf(temp.getContrasena());
                 }
-                if (x3.isEmpty()) {
-                    x3 = temp.getMedico();
-                }
-                if (x4.isEmpty()) {
-                    x4 = temp.getDescripcion();
-                }
+//                if (x3.isEmpty()) {
+//                    x3 = temp.getMedico();
+//                }
+//                if (x4.isEmpty()) {
+//                    x4 = temp.getDescripcion();
+//                }
 //                if (x5.isEmpty()) {
 //                    x5 = temp.getCorreo();
 //                }
@@ -143,20 +154,20 @@ public class prueba2 {
 //                if (!x7.isEmpty()) {
 //                x7 = temp.getEspecialidad();
 
-                Date fechaDate = java.sql.Date.valueOf(x1);
-                LocalTime hora = LocalTime.parse(x2);
+//                Date fechaDate = java.sql.Date.valueOf(x1);
+//                LocalTime hora = LocalTime.parse(x2);
 //                MPaciente temppa = ControllerPaciente.Leer(x3, bd);
-                MMedico tempme = ControllerMedico.Leer(x3, bd);
+//                MMedico tempme = ControllerMedico.Leer(x3, bd);
                 System.out.println("-------------");
                 System.out.println(id);
                 System.out.println(x1);
                 System.out.println(x2);
 //                System.out.println(temppa.getNumeroCedula());
-                System.out.println(tempme.getNumeroCedula());                
+//                System.out.println(tempme.getNumeroCedula());                
                 System.out.println("-------------");
-                MExpediente tempobjecto = new MExpediente(id,fechaDate, hora, x3, x4);
+                MUsuario tempobjecto = new MUsuario(id,x1,Integer.valueOf(x2));
 
-                ControllerExpediente.Actualizar(tempobjecto, bd);
+                ControllerUsuario.Actualizar(tempobjecto, bd);
 
                 System.out.println("Deteniendo...");
 
@@ -164,13 +175,11 @@ public class prueba2 {
                 System.out.println("Número no reconocido. Inténtalo de nuevo.");
             }
 
-            ArrayList<DTOExpediente> mMedico = ControllerExpediente.LeerTodoS(bd);
+            ArrayList<DTOUsuario> mMedico = ControllerUsuario.LeerTodoS(bd);
             for (int i = 0; i < mMedico.size(); i++) {  // Corrected the loop condition
-                System.out.print("ID: " + mMedico.get(i).getNumeroExpediente()+ " / ");  // Use get(i) to access elements in ArrayList
-                System.out.print("Fecha: " + mMedico.get(i).getFecha() + " / ");
-                System.out.print("Hora: " + mMedico.get(i).getHora() + " / ");
-                System.out.print("Medico: " + mMedico.get(i).getMedico() + " / ");
-                System.out.print("Descripcion: " + mMedico.get(i).getDescripcion()+ " / ");
+                System.out.print("Cedula: " + mMedico.get(i).getNumeroCedula()+ " / ");  // Use get(i) to access elements in ArrayList
+                System.out.print("Usuario: " + mMedico.get(i).getUsuario()+ " / ");
+                System.out.print("Contrasena: " + mMedico.get(i).getContrasena()+ " / ");
                 System.out.println("");
                 System.out.println("-----------------------");
             }

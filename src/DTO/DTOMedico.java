@@ -34,6 +34,12 @@ public class DTOMedico {
         this.Salario = Salario;
     }
 
+    public DTOMedico(String NumeroCedula) {
+        this.NumeroCedula = NumeroCedula;
+    }
+    
+    
+
     public DTOMedico(Object[] x) {
         this.NumeroCedula = String.valueOf(x[1]);
         this.Nombre = String.valueOf(x[2]);

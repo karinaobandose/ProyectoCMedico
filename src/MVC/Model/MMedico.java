@@ -22,6 +22,12 @@ public class MMedico implements Model {
     private String Especialidad;
     private double Salario;
 
+    public MMedico(String NumeroCedula) {
+        this.NumeroCedula = NumeroCedula;
+    }
+    
+    
+
     public MMedico(String NumeroCedula, String Nombre,
             Date FechaNacimiento, String Telefono,
             String Correo, Integer Codigo, String Especialidad, double Salario) {
