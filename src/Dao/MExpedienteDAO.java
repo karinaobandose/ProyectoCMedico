@@ -27,7 +27,7 @@ public class MExpedienteDAO implements Dao<DTOExpediente> {
     }
 
     private void AgregarDeBaseDatos() {
-        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "emanuel12");
+        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "Joseph");
         Object[][] Lista = bd.mostrarTodosRegistros(Tabla);
         if (Lista != null) {
             for (Object[] fila : Lista) {
@@ -48,7 +48,7 @@ public class MExpedienteDAO implements Dao<DTOExpediente> {
         if (obj == null) {
             return false;
         }
-        
+
         Object[] Parametros = {obj.getNumeroExpediente(), obj.getFecha(), obj.getHora() + ":00", obj.getMedico(), obj.getDescripcion()};
         boolean resultado;
         System.out.println("EL RESULTADO DEL LEER ES" + Leer(String.valueOf(obj.getNumeroExpediente()), BaseDatos));

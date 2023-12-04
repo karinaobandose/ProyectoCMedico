@@ -44,7 +44,7 @@ public class prueba2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "emanuel12");
+        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "Joseph");
 //        Date fechaManual = new Date(1900, 11, 1);
 //        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
 //        String fechaFormateada = formato.format(fechaManual);
@@ -116,6 +116,7 @@ public class prueba2 {
                 MUsuario temp = ControllerUsuario.Leer(x1, bd);
                 ControllerUsuario.Eliminar(temp, bd);
             } else if (numeroIngresado == 2) {
+<<<<<<< HEAD
                 System.out.print("Cedula");
                 String id = scanner.next();
                 System.out.print("Usuario");
@@ -126,11 +127,27 @@ public class prueba2 {
 //                String x3 = scanner.next();
 //                System.out.print("tele");
 //                String x4 = scanner.next();
+=======
+                System.out.print("ID: ");
+                String id = scanner.next();
+                System.out.print("Fecha: ");
+                String x1 = scanner.next();
+                System.out.print("Hora: ");
+                String x2 = scanner.next();
+                System.out.print("Medico");
+                String x3 = scanner.next();
+                System.out.print("Descripcion: ");
+                String x4 = scanner.next();
+>>>>>>> SegundaRamaS
 //                System.out.print("correo");
 //                String x5 = scanner.next();
 //                System.out.print("codigo");
 
+<<<<<<< HEAD
                 MUsuario temp = ControllerUsuario.Leer(id, bd);
+=======
+                MExpediente temp = ControllerExpediente.Leer(id, bd);
+>>>>>>> SegundaRamaS
 //                Controller.Eliminar(temp, bd);
 
                 if (x1.isEmpty()) {
@@ -153,9 +170,14 @@ public class prueba2 {
 //                }
 //                if (!x7.isEmpty()) {
 //                x7 = temp.getEspecialidad();
+<<<<<<< HEAD
 
 //                Date fechaDate = java.sql.Date.valueOf(x1);
 //                LocalTime hora = LocalTime.parse(x2);
+=======
+                Date fechaDate = java.sql.Date.valueOf(x1);
+                LocalTime hora = LocalTime.parse(x2);
+>>>>>>> SegundaRamaS
 //                MPaciente temppa = ControllerPaciente.Leer(x3, bd);
 //                MMedico tempme = ControllerMedico.Leer(x3, bd);
                 System.out.println("-------------");
