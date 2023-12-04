@@ -4,18 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/BD/BD.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/MVC/Model/Model.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/MVC/Model/MMedico.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/Dao/MCietaDAO.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/DTO/DTOCita.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/BD/prueba.java</file>
+            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/MVC/View/ConsultarMedicos.java</file>
+            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/MVC/Controller/SistemaConsultorio.java</file>
             <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/BD/prueba2.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/Dao/MExpedienteDAO.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/MVC/Model/MCita.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/MVC/Controller/CCita.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/BD/ejemplo.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/MVC/Controller/CExpediente.java</file>
-            <file>file:/C:/Users/emalo/OneDrive/Escritorio/ProyectoConsultorio/src/Dao/MMedicoDAO.java</file>
         </group>
     </open-files>
 </project-private>

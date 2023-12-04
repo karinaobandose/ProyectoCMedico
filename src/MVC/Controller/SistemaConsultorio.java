@@ -4,6 +4,12 @@
  */
 package MVC.Controller;
 
+import BD.PlatillaBD;
+import Dao.MCietaDAO;
+import Dao.MExpedienteDAO;
+import Dao.MMedicoDAO;
+import Dao.MPacienteDAO;
+import Dao.MUsuarioDAO;
 import MVC.View.*;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -19,18 +25,33 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private RegistrarPacientes registrarPacientes;
     private RegistrarCitas registrarCitas;
 
+    MPacienteDAO DaoPaciente = new MPacienteDAO();
+    MMedicoDAO DaoMedico = new MMedicoDAO();
+    MCietaDAO DaoCitas = new MCietaDAO();
+    MExpedienteDAO DaoExpediente = new MExpedienteDAO();
+    MUsuarioDAO DaoUsuario = new MUsuarioDAO();
+
+    CPaciente ControllerPaciente = new CPaciente(DaoPaciente);
+    CMedico ControllerMedico = new CMedico(DaoMedico);
+    CUsuario ControllerUsuario = new CUsuario(DaoUsuario);
+    CCita ControllerCita = new CCita(DaoCitas, DaoMedico, DaoPaciente);
+    CExpediente ControllerExpediente = new CExpediente(DaoExpediente, DaoMedico);
+
     /**
      * Creates new form SistemaConsultorio
      */
     public SistemaConsultorio() {
+
         initComponents();
+        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "emanuel12");
+
         setTitle("Sistema Consultorio");
         this.setLocationRelativeTo(null);
-        consultarMedicos = new ConsultarMedicos();
-        registrarMedicos = new RegistrarMedicos();
+        consultarMedicos = new ConsultarMedicos(DaoMedico, ControllerMedico, bd);
+        registrarMedicos = new RegistrarMedicos(DaoMedico, ControllerMedico, bd,consultarMedicos);
         registrarPacientes = new RegistrarPacientes();
         registrarCitas = new RegistrarCitas();
-        
+
         desktopPane.add(this.consultarMedicos);
         desktopPane.add(this.registrarMedicos);
         desktopPane.add(this.registrarPacientes);

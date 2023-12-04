@@ -4,19 +4,33 @@
  */
 package MVC.View;
 
+import BD.PlatillaBD;
+import Dao.Dao;
+import MVC.Controller.CMedico;
+import MVC.Model.MMedico;
+import java.util.Date;
+
 /**
  *
  * @author josep
  */
 public class RegistrarMedicos extends javax.swing.JInternalFrame {
 
+    Dao DaoMedico;
+    CMedico ControllerMedico;
+    PlatillaBD bd;
+    ConsultarMedicos consultarMedicos;
+
     /**
      * Creates new form RegistrarClientes
      */
-    public RegistrarMedicos() {
+    public RegistrarMedicos(Dao dao, CMedico ControllerMedico, PlatillaBD bd, ConsultarMedicos consultarMedicos) {
         initComponents();
+        DaoMedico = dao;
+        this.ControllerMedico = ControllerMedico;
+        this.bd = bd;
+        this.consultarMedicos = consultarMedicos;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,12 +108,27 @@ public class RegistrarMedicos extends javax.swing.JInternalFrame {
         lblLogoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/logo.jpg"))); // NOI18N
 
         btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 0, 0));
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,6 +228,59 @@ public class RegistrarMedicos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        // TODO add your handling code here:
+        MMedico medico = new MMedico(this.txtCedulaM.getText(), this.txtNombreM.getText(),
+                (java.sql.Date.valueOf(this.txtFechaM.getText())), this.txtTelefonoM.getText(),
+                this.txtCorreoM.getText(), Integer.valueOf(this.txtCodigoColegioM.getText()),
+                this.txtEspecialidadM.getText(), Double.valueOf(this.txtSalarioM.getText()));
+
+        ControllerMedico.Agregar(medico, bd);
+    }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        MMedico medico = ControllerMedico.Leer(this.txtCedulaM.getText(), bd);
+        if (this.txtNombreM.getText().isEmpty()) {
+            this.txtNombreM.setText(medico.getNombre());
+        }
+        if (this.txtFechaM.getText().isEmpty()) {
+            this.txtFechaM.setText(String.valueOf(medico.getFechaNacimiento()));
+        }
+        if (this.txtTelefonoM.getText().isEmpty()) {
+            this.txtTelefonoM.setText(medico.getTelefono());
+        }
+        if (this.txtCorreoM.getText().isEmpty()) {
+            this.txtCorreoM.setText(medico.getCorreo());
+        }
+        if (this.txtCodigoColegioM.getText().isEmpty()) {
+            this.txtCodigoColegioM.setText(String.valueOf(medico.getCodigo()));
+        }
+        if (this.txtEspecialidadM.getText().isEmpty()) {
+            this.txtEspecialidadM.setText(medico.getEspecialidad());
+        }
+        if (this.txtSalarioM.getText().isEmpty()) {
+            this.txtSalarioM.setText(String.valueOf(medico.getSalario()));
+        }
+
+        MMedico tempobjecto = new MMedico(this.txtCedulaM.getText(), this.txtNombreM.getText(),
+                (java.sql.Date.valueOf(this.txtFechaM.getText())), this.txtTelefonoM.getText(),
+                this.txtCorreoM.getText(), Integer.valueOf(this.txtCodigoColegioM.getText()),
+                this.txtEspecialidadM.getText(), Double.valueOf(this.txtSalarioM.getText()));
+
+        ControllerMedico.Actualizar(tempobjecto, bd);
+        consultarMedicos.CargarTabla();
+
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        MMedico medico = ControllerMedico.Leer(this.txtCedulaM.getText(), bd);
+        ControllerMedico.Eliminar(medico, bd);
+        consultarMedicos.CargarTabla();
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

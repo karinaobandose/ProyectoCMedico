@@ -4,17 +4,58 @@
  */
 package MVC.View;
 
+import BD.PlatillaBD;
+import DTO.DTOMedico;
+import DTO.DTOUsuario;
+import Dao.Dao;
+import MVC.Controller.CMedico;
+import java.util.ArrayList;
+
 /**
  *
  * @author josep
  */
 public class ConsultarMedicos extends javax.swing.JInternalFrame {
 
+    Dao DaoMedico;
+    CMedico ControllerMedico;
+    PlatillaBD bd;
+
     /**
      * Creates new form ConsultarClientes
      */
-    public ConsultarMedicos() {
+    public ConsultarMedicos(Dao dao, CMedico ControllerMedico, PlatillaBD bd) {
         initComponents();
+        DaoMedico = dao;
+        this.ControllerMedico = ControllerMedico;
+        this.bd = bd;
+        CargarTabla();
+    }
+
+    public void CargarTabla() {
+        ArrayList<DTOMedico> x = ControllerMedico.LeerTodoS(bd);
+        int z = 0;
+        for (DTOMedico Lista : x) {
+            int c = 0;
+            this.tMedicos.setValueAt(Lista.getNumeroCedula(), z, c);
+            c++;
+            this.tMedicos.setValueAt(Lista.getNombre(), z, c);
+            c++;
+            this.tMedicos.setValueAt(Lista.getFechaNacimiento(), z, c);
+            c++;
+            this.tMedicos.setValueAt(Lista.getTelefono(), z, c);
+            c++;
+            this.tMedicos.setValueAt(Lista.getCorreo(), z, c);
+            c++;
+            this.tMedicos.setValueAt(Lista.getCodigo(), z, c);
+            c++;
+            this.tMedicos.setValueAt(Lista.getEspecialidad(), z, c);
+            c++;
+            this.tMedicos.setValueAt(Lista.getSalario(), z, c);
+            c++;
+            z++;
+        }
+
     }
 
     /**
@@ -41,6 +82,22 @@ public class ConsultarMedicos extends javax.swing.JInternalFrame {
 
         tMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},

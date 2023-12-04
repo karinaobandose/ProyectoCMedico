@@ -27,7 +27,7 @@ public class MMedicoDAO implements Dao<DTOMedico> {
     }
 
     private void AgregarDeBaseDatos() {
-        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "Joseph");
+        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "emanuel12");
         Object[][] Lista = bd.mostrarTodosRegistros(Tabla);
         if (Lista != null) {
             for (Object[] fila : Lista) {
@@ -55,6 +55,7 @@ public class MMedicoDAO implements Dao<DTOMedico> {
             String x = String.valueOf(obj.getNumeroCedula());
             ListaMedicos.put(x, obj);
             System.out.println("Registro Agregado correctamente");
+            AgregarDeBaseDatos();
             return resultado;
         } else if (Leer(obj.getNumeroCedula(), BaseDatos) instanceof DTOMedico) {
             String x = String.valueOf(obj.getNumeroCedula());
@@ -93,6 +94,7 @@ public class MMedicoDAO implements Dao<DTOMedico> {
             obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario(), obj.getNumeroCedula()};
         boolean resultado = BaseDatos.actualizarRegistro(Tabla, setValuesActualizar, condicionActualizar, Parametros);
 //        return this.Agregar(obj);
+        AgregarDeBaseDatos();
         return resultado;
     }
 
@@ -109,6 +111,7 @@ public class MMedicoDAO implements Dao<DTOMedico> {
         boolean resultado = BaseDatos.eliminarRegistro(Tabla, condicionEliminar, Parametro);
         if (resultado) {
             ListaMedicos.remove(x);
+            AgregarDeBaseDatos();
             return true;
         } else {
             return false;

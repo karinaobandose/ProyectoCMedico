@@ -32,7 +32,7 @@ public class MCietaDAO implements Dao<DTOCita> {
     }
 
     private void AgregarDeBaseDatos() {
-        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "Joseph");
+        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "emanuel12");
         Object[][] Lista = bd.mostrarTodosRegistros(Tabla);
         if (Lista != null) {
             for (Object[] fila : Lista) {
