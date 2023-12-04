@@ -15,6 +15,7 @@ public class ConsultarCitas extends javax.swing.JInternalFrame {
      */
     public ConsultarCitas() {
         initComponents();
+        
     }
 
     /**
