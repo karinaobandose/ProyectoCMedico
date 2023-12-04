@@ -13,16 +13,26 @@ import java.util.Date;
  */
 public class MExpediente implements Model {
     
+    private String NumeroExpediente;
     private Date Fecha;
     private LocalTime Hora;
-    private MMedico Medico;
+    private String Medico;
     private String Descripcion;
 
-    public MExpediente(Date Fecha, LocalTime Hora, MMedico Medico, String Descripcion) {
+    public MExpediente(String NumeroExpediente,Date Fecha, LocalTime Hora, String Medico, String Descripcion) {
+        this.NumeroExpediente = NumeroExpediente;
         this.Fecha = Fecha;
         this.Hora = Hora;
         this.Medico = Medico;
         this.Descripcion = Descripcion;
+    }
+
+    public String getNumeroExpediente() {
+        return NumeroExpediente;
+    }
+
+    public void setNumeroExpediente(String NumeroExpediente) {
+        this.NumeroExpediente = NumeroExpediente;
     }
     
     public Date getFecha() {
@@ -41,11 +51,11 @@ public class MExpediente implements Model {
         this.Hora = Hora;
     }
 
-    public MMedico getMedico() {
+    public String getMedico() {
         return Medico;
     }
 
-    public void setMedico(MMedico Medico) {
+    public void setMedico(String Medico) {
         this.Medico = Medico;
     }
 
