@@ -31,6 +31,8 @@ public class prueba {
 //        String condicionEliminar = "id = ?";
 //        Object[] parametrosEliminar = {1};
 //        eliminarRegistro("prueba", condicionEliminar, parametrosEliminar, bd);
+
+
 //        // Actualizar un registro
 //        String setValuesActualizar = "nombre = ?";
 //        String condicionActualizar = "id = ?";

@@ -4,13 +4,26 @@
  */
 package BD;
 
+import DTO.DTOCita;
+import DTO.DTOMedico;
+import DTO.DTOPaciente;
+import Dao.MCietaDAO;
 import Dao.MMedicoDAO;
+import Dao.MPacienteDAO;
+import MVC.Controller.CCita;
 import MVC.Controller.CMedico;
+import MVC.Controller.CPaciente;
+import MVC.Model.MCita;
 import MVC.Model.MMedico;
+import MVC.Model.MPaciente;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
@@ -29,29 +42,123 @@ public class prueba2 {
 //        String fechaFormateada = formato.format(fechaManual);
 //        LocalDate fecha = LocalDate.of(2023, 12, 1);
 
-        LocalDate fechaLocalDate = LocalDate.of(2023, 12, 1);
-        Date fechaDate = java.sql.Date.valueOf(fechaLocalDate);
-        System.out.println(fechaDate);
+        Scanner scanner = new Scanner(System.in);
 
-        MMedico medico = new MMedico("123", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com", 5650, "Doctor", 500.79);
-        MMedico medico1 = new MMedico("234", "Perez", fechaDate, "61689514", "Emmanuel@asd.com", 5650, "Doctor", 500.79);
-        MMedico medico2 = new MMedico("456", "Maria", fechaDate, "61689514", "Emmanuel@asd.com", 5650, "Doctor", 500.79);
+        MPacienteDAO DaoPaciente = new MPacienteDAO();
+        MMedicoDAO DaoMedico = new MMedicoDAO();
+        MCietaDAO DaoCitas = new MCietaDAO();
 
-        System.out.println(medico.EstaCompleto());
-
-        MMedicoDAO Dao = new MMedicoDAO();
-
-        CMedico Controller = new CMedico(Dao);
-
-        ArrayList<MMedico> x = Controller.LeerTodo(bd);
+        CPaciente ControllerPaciente = new CPaciente(DaoPaciente);
+        CMedico ControllerMedico = new CMedico(DaoMedico);
+        CCita ControllerCita = new CCita(DaoCitas,DaoMedico ,DaoPaciente );
         
-        System.out.println(x.get(0).getNumeroCedula());
+        ArrayList<DTOCita> x = ControllerCita.LeerTodoS(bd);
+                for (DTOCita mMedico : x) {
+                    System.out.print("ID: " + mMedico.getId()+ " / ");
+                    System.out.print("Fecha: " + mMedico.getFecha() + " / ");
+                    System.out.print("Hora: " + mMedico.getHora()+ " / ");
+                    System.out.print("Paciente: " + mMedico.getPaciente().getNumeroCedula()+ " / ");
+                    System.out.print("Medico: " + mMedico.getMedico().getNumeroCedula()+ " / ");
+                    System.out.println("");
+                    System.out.println("-----------------------");
+                }
 
+        int numeroIngresado;
 
+        do {
+            System.out.print("Ingresa un número (1 para continuar, 99 para detener): ");
+            numeroIngresado = scanner.nextInt();
 
-//        Controller.Agregar(medico,bd);
-//        Controller.Agregar(medico1,bd);
-//        Controller.Agregar(medico2,bd);
+            if (numeroIngresado == 1) {
+                System.out.println("Continuando...");
+                LocalDate fechaLocalDate = LocalDate.of(2000, 12, 1);
+                Date fechaDate = java.sql.Date.valueOf(fechaLocalDate);
+                System.out.println(fechaDate);
+                
+                LocalTime horaEspecifica = LocalTime.of(10, 30, 00);
+
+                
+                MPaciente Paciente = new MPaciente("4141", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com");
+                MMedico medico = new MMedico("985", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com",5056,"Medico",1555);
+//                MPaciente medico1 = new MPaciente("234", "Perez", fechaDate, "61689514", "Emmanuel@asd.com");
+//                MPaciente medico2 = new MPaciente("456", "Maria", fechaDate, "61689514", "Emmanuel@asd.com");
+
+                MCita Cita = new MCita(fechaDate,horaEspecifica,Paciente,medico);
+
+//                System.out.println(medico.EstaCompleto());
+
+                ControllerCita.Agregar(Cita, bd);
+//                Controller.Agregar(medico1, bd);
+                x = ControllerCita.LeerTodoS(bd);
+                for (DTOCita mMedico : x) {
+                    System.out.print("ID: " + mMedico.getId()+ " / ");
+                    System.out.print("Fecha: " + mMedico.getFecha() + " / ");
+                    System.out.print("Hora: " + mMedico.getHora()+ " / ");
+                    System.out.print("Paciente: " + mMedico.getPaciente().getNumeroCedula()+ " / ");
+                    System.out.print("Medico: " + mMedico.getMedico().getNumeroCedula()+ " / ");
+                    System.out.println("");
+                    System.out.println("-----------------------");
+                }
+            } else if (numeroIngresado == 99) {
+                System.out.println("Deteniendo...");
+                
+            } else if (numeroIngresado == 3) {
+                System.out.print("cedula");
+                String x1 = scanner.next();
+                MPaciente temp = Controller.Leer(x1, bd);
+                Controller.Eliminar(temp, bd);
+            } else if (numeroIngresado == 2) {
+                System.out.print("cedula");
+                String x1 = scanner.next();
+                System.out.print("nombre");
+                String x2 = scanner.next();
+                System.out.print("fecha");
+                String x3 = scanner.next();
+                System.out.print("tele");
+                String x4 = scanner.next();
+                System.out.print("correo");
+                String x5 = scanner.next();
+                System.out.print("codigo");
+
+                MPaciente temp = Controller.Leer(x1, bd);
+//                Controller.Eliminar(temp, bd);
+
+                if (x1.isEmpty()) {
+                    x1 = temp.getNumeroCedula();
+                }
+                if (x2.isEmpty()) {
+                    x2 = temp.getNombre();
+                }
+                if (x3.isEmpty()) {
+                    x3 = String.valueOf(temp.getFechaN());
+                }
+                if (x4.isEmpty()) {
+                    x4 = temp.getTelefono();
+                }
+                if (x5.isEmpty()) {
+                    x5 = temp.getCorreo();
+//                }
+//                if (x6.equals(null)) {
+//                    x6 = temp.getCodigo();
+//                }
+//                if (!x7.isEmpty()) {
+//                    x7 = temp.getEspecialidad();
+                }
+
+                Date fechaDate = java.sql.Date.valueOf(x3);
+
+                MPaciente tempobjecto = new MPaciente(x1, x2, fechaDate, x4, x5);
+
+                Controller.Actualizar(tempobjecto, bd);
+
+                
+                System.out.println("Deteniendo...");
+            } else {
+                System.out.println("Número no reconocido. Inténtalo de nuevo.");
+            }
+
+        } while (numeroIngresado != 99);
+
 //
 //        System.out.println(Controller.Leer("234",bd).getNombre());;
 //        Controller.Leer("404370845",bd);
