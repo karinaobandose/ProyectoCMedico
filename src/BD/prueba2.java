@@ -4,16 +4,22 @@
  */
 package BD;
 
+import DTO.DTOCita;
 import DTO.DTOMedico;
 import DTO.DTOPaciente;
+import Dao.MCietaDAO;
 import Dao.MMedicoDAO;
 import Dao.MPacienteDAO;
+import MVC.Controller.CCita;
 import MVC.Controller.CMedico;
 import MVC.Controller.CPaciente;
+import MVC.Model.MCita;
 import MVC.Model.MMedico;
 import MVC.Model.MPaciente;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,19 +44,21 @@ public class prueba2 {
 
         Scanner scanner = new Scanner(System.in);
 
-        MPacienteDAO Dao = new MPacienteDAO();
+        MPacienteDAO DaoPaciente = new MPacienteDAO();
+        MMedicoDAO DaoMedico = new MMedicoDAO();
+        MCietaDAO DaoCitas = new MCietaDAO();
 
-        CPaciente Controller = new CPaciente(Dao);
+        CPaciente ControllerPaciente = new CPaciente(DaoPaciente);
+        CMedico ControllerMedico = new CMedico(DaoMedico);
+        CCita ControllerCita = new CCita(DaoCitas,DaoMedico ,DaoPaciente );
         
-        ArrayList<DTOPaciente> x = Controller.LeerTodoS(bd);
-                for (DTOPaciente mMedico : x) {
-                    LocalDate xxx = LocalDate.parse(String.valueOf(mMedico.getFechaN()));
-                    int xx = Period.between(xxx, LocalDate.now()).getYears();
-                    System.out.print("Cedula: " + mMedico.getNumeroCedula() + " / ");
-                    System.out.print("Nombre: " + mMedico.getNombre()+ " / ");
-                    System.out.print("Fecha Nacimiento: " + xx+ " / ");
-                    System.out.print("Telefono: " + mMedico.getTelefono()+ " / ");
-                    System.out.print("Correo: " + mMedico.getCorreo()+ " / ");
+        ArrayList<DTOCita> x = ControllerCita.LeerTodoS(bd);
+                for (DTOCita mMedico : x) {
+                    System.out.print("ID: " + mMedico.getId()+ " / ");
+                    System.out.print("Fecha: " + mMedico.getFecha() + " / ");
+                    System.out.print("Hora: " + mMedico.getHora()+ " / ");
+                    System.out.print("Paciente: " + mMedico.getPaciente().getNumeroCedula()+ " / ");
+                    System.out.print("Medico: " + mMedico.getMedico().getNumeroCedula()+ " / ");
                     System.out.println("");
                     System.out.println("-----------------------");
                 }
@@ -63,25 +71,32 @@ public class prueba2 {
 
             if (numeroIngresado == 1) {
                 System.out.println("Continuando...");
-                LocalDate fechaLocalDate = LocalDate.of(2023, 12, 1);
+                LocalDate fechaLocalDate = LocalDate.of(2000, 12, 1);
                 Date fechaDate = java.sql.Date.valueOf(fechaLocalDate);
                 System.out.println(fechaDate);
+                
+                LocalTime horaEspecifica = LocalTime.of(10, 30, 00);
 
-                MPaciente medico = new MPaciente("4141", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com");
-                MPaciente medico1 = new MPaciente("234", "Perez", fechaDate, "61689514", "Emmanuel@asd.com");
-                MPaciente medico2 = new MPaciente("456", "Maria", fechaDate, "61689514", "Emmanuel@asd.com");
+                
+                MPaciente Paciente = new MPaciente("4141", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com");
+                MMedico medico = new MMedico("985", "Emmanuel", fechaDate, "61689514", "Emmanuel@asd.com",5056,"Medico",1555);
+//                MPaciente medico1 = new MPaciente("234", "Perez", fechaDate, "61689514", "Emmanuel@asd.com");
+//                MPaciente medico2 = new MPaciente("456", "Maria", fechaDate, "61689514", "Emmanuel@asd.com");
 
-                System.out.println(medico.EstaCompleto());
+                MCita Cita = new MCita(fechaDate,horaEspecifica,Paciente,medico);
 
-                Controller.Agregar(medico, bd);
+//                System.out.println(medico.EstaCompleto());
+
+                ControllerCita.Agregar(Cita, bd);
 //                Controller.Agregar(medico1, bd);
-                x = Controller.LeerTodoS(bd);
-                for (DTOPaciente mMedico : x) {
-                    System.out.println("Cedula: " + mMedico.getNumeroCedula());
-                    System.out.println("Nombre: " + mMedico.getNombre());
-                    System.out.println("Fecha Nacimiento: " + mMedico.getFechaN());
-                    System.out.println("Telefono: " + mMedico.getTelefono());
-                    System.out.println("Correo: " + mMedico.getCorreo());
+                x = ControllerCita.LeerTodoS(bd);
+                for (DTOCita mMedico : x) {
+                    System.out.print("ID: " + mMedico.getId()+ " / ");
+                    System.out.print("Fecha: " + mMedico.getFecha() + " / ");
+                    System.out.print("Hora: " + mMedico.getHora()+ " / ");
+                    System.out.print("Paciente: " + mMedico.getPaciente().getNumeroCedula()+ " / ");
+                    System.out.print("Medico: " + mMedico.getMedico().getNumeroCedula()+ " / ");
+                    System.out.println("");
                     System.out.println("-----------------------");
                 }
             } else if (numeroIngresado == 99) {

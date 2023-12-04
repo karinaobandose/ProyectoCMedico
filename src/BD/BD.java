@@ -219,6 +219,7 @@ public class BD {
             String sql = "INSERT INTO " + tabla + " (" + columnas + ") VALUES (" + valores + ")";
             this.prepararSentencia(sql);
             cargar(parametros);
+            System.out.println("EL RESULTADO DE LA OPERACION ES " + (this.sentencia.executeUpdate() > 0));
             return this.sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             this.error = ex.toString();

@@ -26,6 +26,13 @@ public class MCita implements Model {
         this.Paciente = Paciente;
         this.Medico = Medico;
     }
+
+    public MCita(Date Fecha, LocalTime Hora, MPaciente Paciente, MMedico Medico) {
+        this.Fecha = Fecha;
+        this.Hora = Hora;
+        this.Paciente = Paciente;
+        this.Medico = Medico;
+    }
     
     public Integer getId() {
         return Id;
