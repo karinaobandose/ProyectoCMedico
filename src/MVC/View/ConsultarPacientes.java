@@ -4,17 +4,59 @@
  */
 package MVC.View;
 
+import BD.PlatillaBD;
+import DTO.DTOMedico;
+import DTO.DTOPaciente;
+import Dao.Dao;
+import MVC.Controller.CPaciente;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
+
 /**
  *
  * @author josep
  */
 public class ConsultarPacientes extends javax.swing.JInternalFrame {
 
+    Dao DaoPaciente;
+    CPaciente ControllerPaciente;
+    PlatillaBD bd;
+
     /**
      * Creates new form ConsultarPacientes
      */
-    public ConsultarPacientes() {
+    public ConsultarPacientes(Dao dao, CPaciente ControllerPaciente, PlatillaBD bd) {
         initComponents();
+        DaoPaciente = dao;
+        this.ControllerPaciente = ControllerPaciente;
+        this.bd = bd;
+        CargarTabla();
+    }
+
+    public void CargarTabla() {
+        ArrayList<DTOPaciente> x = ControllerPaciente.LeerTodoS(bd);
+        int z = 0;
+        for (DTOPaciente Lista : x) {
+            int c = 0;
+            this.tPacientes.setValueAt(Lista.getNumeroCedula(), z, c);
+            c++;
+            this.tPacientes.setValueAt(Lista.getNombre(), z, c);
+            c++;
+            LocalDate fechaNacimiento = LocalDate.parse(String.valueOf(Lista.getFechaN()));
+            LocalDate fechaActual = LocalDate.now();
+
+            this.tPacientes.setValueAt(Lista.getFechaN(), z, c);
+            c++;
+            this.tPacientes.setValueAt(Lista.getTelefono(), z, c);
+            c++;
+            this.tPacientes.setValueAt(Lista.getCorreo(), z, c);
+            c++;
+            this.tPacientes.setValueAt(Period.between(fechaNacimiento, fechaActual).getYears(), z, c);
+            c++;
+            z++;
+        }
+
     }
 
     /**

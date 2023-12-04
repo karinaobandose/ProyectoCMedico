@@ -21,6 +21,7 @@ import java.awt.Point;
 public class SistemaConsultorio extends javax.swing.JFrame {
 
     private ConsultarMedicos consultarMedicos;
+    private ConsultarPacientes consultarPacientes;
     private RegistrarMedicos registrarMedicos;
     private RegistrarPacientes registrarPacientes;
     private RegistrarCitas registrarCitas;
@@ -50,15 +51,12 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         consultarMedicos = new ConsultarMedicos(DaoMedico, ControllerMedico, bd);
         registrarMedicos = new RegistrarMedicos(DaoMedico, ControllerMedico, bd,consultarMedicos);
-        registrarPacientes = new RegistrarPacientes();
+        consultarPacientes = new ConsultarPacientes(DaoPaciente, ControllerPaciente, bd);
+        registrarPacientes = new RegistrarPacientes(DaoPaciente, ControllerPaciente, bd, consultarPacientes);
         registrarCitas = new RegistrarCitas();
-<<<<<<< HEAD
-
-=======
         registrarExpedientes = new RegistrarExpedientes();
-        
->>>>>>> SegundaRamaS
         desktopPane.add(this.consultarMedicos);
+        desktopPane.add(this.consultarPacientes);
         desktopPane.add(this.registrarMedicos);
         desktopPane.add(this.registrarPacientes);
         desktopPane.add(this.registrarCitas);
@@ -196,6 +194,11 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         jMenu2.add(miRegistrarP);
 
         miConsultarP.setText("Consultar Pacientes");
+        miConsultarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultarPActionPerformed(evt);
+            }
+        });
         jMenu2.add(miConsultarP);
 
         menuBar.add(jMenu2);
@@ -287,6 +290,11 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private void miGestionarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miGestionarEActionPerformed
         registrarExpedientes.setVisible(true);
     }//GEN-LAST:event_miGestionarEActionPerformed
+
+    private void miConsultarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarPActionPerformed
+        // TODO add your handling code here:
+        consultarPacientes.setVisible(true);
+    }//GEN-LAST:event_miConsultarPActionPerformed
 
     /**
      * @param args the command line arguments

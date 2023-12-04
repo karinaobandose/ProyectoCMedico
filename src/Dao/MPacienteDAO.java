@@ -55,11 +55,13 @@ public class MPacienteDAO implements Dao<DTOPaciente> {
             String x = String.valueOf(obj.getNumeroCedula());
             ListaPacientes.put(x, obj);
             System.out.println("Registro Agregado correctamente");
+            AgregarDeBaseDatos();
             return resultado;
         } else if (Leer(obj.getNumeroCedula(), BaseDatos) instanceof DTOPaciente) {
             String x = String.valueOf(obj.getNumeroCedula());
             ListaPacientes.put(x, obj);
             System.out.println("Registro Agregado correctamente");
+            AgregarDeBaseDatos();
             return true;
         } else {
             System.out.println("Error al actualizar el registro: " + BaseDatos.getError());
@@ -93,6 +95,7 @@ public class MPacienteDAO implements Dao<DTOPaciente> {
             obj.getCorreo(), obj.getNumeroCedula()};
         boolean resultado = BaseDatos.actualizarRegistro(Tabla, setValuesActualizar, condicionActualizar, Parametros);
 //        return this.Agregar(obj);
+        AgregarDeBaseDatos();
         return resultado;
     }
 
@@ -109,6 +112,7 @@ public class MPacienteDAO implements Dao<DTOPaciente> {
         boolean resultado = BaseDatos.eliminarRegistro(Tabla, condicionEliminar, Parametro);
         if (resultado) {
             ListaPacientes.remove(x);
+            AgregarDeBaseDatos();
             return true;
         } else {
             return false;

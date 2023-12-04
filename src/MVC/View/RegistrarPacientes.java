@@ -4,17 +4,31 @@
  */
 package MVC.View;
 
+import BD.PlatillaBD;
+import Dao.Dao;
+import MVC.Controller.CPaciente;
+import MVC.Model.MPaciente;
+
 /**
  *
  * @author josep
  */
 public class RegistrarPacientes extends javax.swing.JInternalFrame {
 
+    Dao DaoPaciente;
+    CPaciente ControllerPaciente;
+    PlatillaBD bd;
+    ConsultarPacientes ConsultarPacientes;
+
     /**
      * Creates new form RegistrarPacientes
      */
-    public RegistrarPacientes() {
+    public RegistrarPacientes(Dao dao, CPaciente ControllerPaciente, PlatillaBD bd, ConsultarPacientes ConsultarPacientes) {
         initComponents();
+        DaoPaciente = dao;
+        this.ControllerPaciente = ControllerPaciente;
+        this.bd = bd;
+        this.ConsultarPacientes = ConsultarPacientes;
     }
 
     /**
@@ -86,12 +100,27 @@ public class RegistrarPacientes extends javax.swing.JInternalFrame {
         lblLogoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/logo2.jpg"))); // NOI18N
 
         btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 51, 51));
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,6 +216,49 @@ public class RegistrarPacientes extends javax.swing.JInternalFrame {
     private void txtEdadActualPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActualPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEdadActualPActionPerformed
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        // TODO add your handling code here:
+        MPaciente paciente = new MPaciente(this.txtCedulaP.getText(), this.txtNombreP.getText(),
+                (java.sql.Date.valueOf(this.txtFechaP.getText())), this.txtTelefonoP.getText(),
+                this.txtCorreoP.getText());
+
+        ControllerPaciente.Agregar(paciente, bd);
+    }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+
+        MPaciente medico = ControllerPaciente.Leer(this.txtCedulaP.getText(), bd);
+        if (this.txtNombreP.getText().isEmpty()) {
+            this.txtNombreP.setText(medico.getNombre());
+        }
+        if (this.txtFechaP.getText().isEmpty()) {
+            this.txtFechaP.setText(String.valueOf(medico.getFechaN()));
+        }
+        if (this.txtTelefonoP.getText().isEmpty()) {
+            this.txtTelefonoP.setText(medico.getTelefono());
+        }
+        if (this.txtCorreoP.getText().isEmpty()) {
+            this.txtCorreoP.setText(medico.getCorreo());
+        }
+        
+
+        MPaciente tempobjecto = new MPaciente(this.txtCedulaP.getText(), this.txtNombreP.getText(),
+                (java.sql.Date.valueOf(this.txtFechaP.getText())), this.txtTelefonoP.getText(),
+                this.txtCorreoP.getText());
+
+        ControllerPaciente.Actualizar(tempobjecto, bd);
+        ConsultarPacientes.CargarTabla();
+
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        MPaciente medico = ControllerPaciente.Leer(this.txtCedulaP.getText(), bd);
+        ControllerPaciente.Eliminar(medico, bd);
+        ConsultarPacientes.CargarTabla();
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
