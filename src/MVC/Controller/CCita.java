@@ -10,6 +10,7 @@ import DTO.DTOMedico;
 import DTO.DTOPaciente;
 import Dao.Dao;
 import MVC.Model.MCita;
+import MVC.Model.MMedico;
 import MVC.Model.MPaciente;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,14 +33,20 @@ public class CCita implements Controlador<MCita> {
         this.daoPaciente = daoPaciente;
     }
 
+    public CCita() {
+    }
+
     @Override
     public boolean Agregar(MCita obj, PlatillaBD BaseDatos) {
+        
+        System.out.println("AGREGAR DEL CONTROLADOR");
+        
         if (dao.Leer(String.valueOf(obj.getId()), BaseDatos) != null) {
 //            view.displayMessage("Usuario ya existente, no se agregó");
             System.out.println("Ya existe");
             return false;
         } else {
-            DTOCita DTO = new DTOCita(obj.getId(), obj.getFecha(), obj.getHora(), obj.getPaciente(), obj.getMedico());
+            DTOCita DTO = new DTOCita(obj.getId(), obj.getFecha(), obj.getHora(), obj.getPaciente().getNumeroCedula(), obj.getMedico().getNumeroCedula());
             if (dao.Agregar(DTO, BaseDatos)) {
 //                view.displayMessage("Usuario gregado correctamente");
                 System.out.println("Agregado");
@@ -61,13 +68,18 @@ public class CCita implements Controlador<MCita> {
             System.out.println("Error");
             return null;
         } else {
-            DTOPaciente TempDTOPaciente = (DTOPaciente) this.daoPaciente.Leer(DTO.getPaciente().getNumeroCedula(), BaseDatos);
-//            MPaciente PacienteTemp = new MPaciente(TempDTOPaciente.getNumeroCedula(),
-//                    TempDTOPaciente.getNombre(),TempDTOPaciente.getFechaN(),
-//                    TempDTOPaciente.getTelefono(),TempDTOPaciente.getCorreo());
-            DTOMedico MedicoTemp = (DTOMedico) this.daoPaciente.Leer(DTO.getPaciente().getNumeroCedula(), BaseDatos);
+            DTOPaciente TempDTOPaciente = (DTOPaciente) this.daoPaciente.Leer(DTO.getPaciente(), BaseDatos);
+            MPaciente PacienteTemp = new MPaciente(TempDTOPaciente.getNumeroCedula(),
+                    TempDTOPaciente.getNombre(), TempDTOPaciente.getFechaN(),
+                    TempDTOPaciente.getTelefono(), TempDTOPaciente.getCorreo());
+            
+            DTOMedico MedicoDTOTemp = (DTOMedico) this.daoMedico.Leer(DTO.getPaciente(), BaseDatos);
+            
+            MMedico MedicoTemp = new MMedico(MedicoDTOTemp.getNumeroCedula(),
+                    MedicoDTOTemp.getNombre(), MedicoDTOTemp.getFechaNacimiento(),
+                    MedicoDTOTemp.getTelefono(), MedicoDTOTemp.getCorreo(), MedicoDTOTemp.getCodigo(), MedicoDTOTemp.getEspecialidad(), MedicoDTOTemp.getSalario());
 
-            MCita MCita = new MCita(DTO.getId(),DTO.getFecha(),DTO.getHora(),DTO.getPaciente(),DTO.getMedico());
+            MCita MCita = new MCita(DTO.getId(), DTO.getFecha(), DTO.getHora(), PacienteTemp, MedicoTemp);
             System.out.println("Se mostrara");
 
 //            view.display(user);
@@ -107,7 +119,7 @@ public class CCita implements Controlador<MCita> {
     private ArrayList<DTOCita> PasarADTO(List<MCita> MCita) {
         ArrayList<DTOCita> lista = new ArrayList<DTOCita>();
         for (MCita mCita : MCita) {
-            DTOCita x = new DTOCita(mCita.getId(),mCita.getFecha(),mCita.getHora(),mCita.getPaciente(),mCita.getMedico());
+            DTOCita x = new DTOCita(mCita.getId(), mCita.getFecha(), mCita.getHora(), mCita.getPaciente().getNumeroCedula(), mCita.getMedico().getNumeroCedula());
             lista.add(x);
         }
         return lista;
@@ -117,7 +129,7 @@ public class CCita implements Controlador<MCita> {
     public boolean Actualizar(MCita obj, PlatillaBD BaseDatos) {
         if (dao.Leer(String.valueOf(obj.getId()), BaseDatos) != null) {
 //            view.displayMessage("Usuario ya existente, no se agregó");
-            DTOCita DTOCita = new DTOCita(obj.getId(),obj.getFecha(),obj.getHora(),obj.getPaciente(),obj.getMedico());
+            DTOCita DTOCita = new DTOCita(obj.getId(), obj.getFecha(), obj.getHora(), obj.getPaciente().getNumeroCedula(), obj.getMedico().getNumeroCedula());
 
             if (dao.Actualizar(DTOCita, BaseDatos)) {
 //                view.displayMessage("Usuario gregado correctamente");
@@ -139,8 +151,8 @@ public class CCita implements Controlador<MCita> {
     @Override
     public boolean Eliminar(MCita obj, PlatillaBD BaseDatos) {
         if (dao.Leer(String.valueOf(obj.getId()), BaseDatos) != null) {
-            DTOCita DTOCita = new DTOCita(obj.getId(),obj.getFecha(),
-                    obj.getHora(),obj.getPaciente(),obj.getMedico());
+            DTOCita DTOCita = new DTOCita(obj.getId(), obj.getFecha(),
+                    obj.getHora(), obj.getPaciente().getNumeroCedula(), obj.getMedico().getNumeroCedula());
 
 //            DTOMedico DTOMedico = new DTOMedico(obj.getNumeroCedula(), obj.getNombre(), obj.getFechaNacimiento(), obj.getTelefono(),
 //                    obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario());
