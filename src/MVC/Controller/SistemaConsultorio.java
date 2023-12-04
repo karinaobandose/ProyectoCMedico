@@ -18,6 +18,7 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private RegistrarMedicos registrarMedicos;
     private RegistrarPacientes registrarPacientes;
     private RegistrarCitas registrarCitas;
+    private RegistrarExpedientes registrarExpedientes;
 
     /**
      * Creates new form SistemaConsultorio
@@ -30,11 +31,13 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         registrarMedicos = new RegistrarMedicos();
         registrarPacientes = new RegistrarPacientes();
         registrarCitas = new RegistrarCitas();
+        registrarExpedientes = new RegistrarExpedientes();
         
         desktopPane.add(this.consultarMedicos);
         desktopPane.add(this.registrarMedicos);
         desktopPane.add(this.registrarPacientes);
         desktopPane.add(this.registrarCitas);
+        desktopPane.add(this.registrarExpedientes);
     }
 
     /**
@@ -71,6 +74,8 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         miRegistrarC = new javax.swing.JMenuItem();
         miConsultarC = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        miGestionarE = new javax.swing.JMenuItem();
+        miConsultarE = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,6 +191,28 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         menuBar.add(jMenu3);
 
         jMenu4.setText("Expedientes");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
+
+        miGestionarE.setText("Gestionar Expedientes");
+        miGestionarE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miGestionarEActionPerformed(evt);
+            }
+        });
+        jMenu4.add(miGestionarE);
+
+        miConsultarE.setText("Consultar Expedientes");
+        miConsultarE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultarEActionPerformed(evt);
+            }
+        });
+        jMenu4.add(miConsultarE);
+
         menuBar.add(jMenu4);
 
         setJMenuBar(menuBar);
@@ -223,6 +250,18 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private void miRegistrarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRegistrarCActionPerformed
         registrarCitas.setVisible(true);
     }//GEN-LAST:event_miRegistrarCActionPerformed
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void miConsultarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miConsultarEActionPerformed
+
+    private void miGestionarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miGestionarEActionPerformed
+        registrarExpedientes.setVisible(true);
+    }//GEN-LAST:event_miGestionarEActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,8 +315,10 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem miConsultarC;
+    private javax.swing.JMenuItem miConsultarE;
     private javax.swing.JMenuItem miConsultarM;
     private javax.swing.JMenuItem miConsultarP;
+    private javax.swing.JMenuItem miGestionarE;
     private javax.swing.JMenuItem miRegistrarC;
     private javax.swing.JMenuItem miRegistrarM;
     private javax.swing.JMenuItem miRegistrarP;

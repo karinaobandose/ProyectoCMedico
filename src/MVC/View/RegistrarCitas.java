@@ -27,19 +27,19 @@ public class RegistrarCitas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblCedulaM = new javax.swing.JLabel();
-        txtCedulaM = new javax.swing.JTextField();
-        lblCedulaM1 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        lblCedulaM2 = new javax.swing.JLabel();
-        lblCedulaM3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        lblCedulaM4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        lblIdC = new javax.swing.JLabel();
+        txtIdC = new javax.swing.JTextField();
+        lblPacienteC = new javax.swing.JLabel();
+        txtHoraC = new javax.swing.JFormattedTextField();
+        txtFechaC = new com.toedter.calendar.JDateChooser();
+        lblFechaC = new javax.swing.JLabel();
+        lblHoraC = new javax.swing.JLabel();
+        jcPacienteC = new javax.swing.JComboBox<>();
+        lblMedicoC = new javax.swing.JLabel();
+        jcMedicoC = new javax.swing.JComboBox<>();
+        btnCrear = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         lblLogoM = new javax.swing.JLabel();
 
         setClosable(true);
@@ -51,41 +51,41 @@ public class RegistrarCitas extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        lblCedulaM.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCedulaM.setForeground(new java.awt.Color(255, 255, 255));
-        lblCedulaM.setText("ID");
+        lblIdC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblIdC.setForeground(new java.awt.Color(255, 255, 255));
+        lblIdC.setText("ID");
 
-        txtCedulaM.setEnabled(false);
+        txtIdC.setEnabled(false);
 
-        lblCedulaM1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCedulaM1.setForeground(new java.awt.Color(255, 255, 255));
-        lblCedulaM1.setText("Paciente");
+        lblPacienteC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPacienteC.setForeground(new java.awt.Color(255, 255, 255));
+        lblPacienteC.setText("Paciente");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        txtHoraC.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
 
-        jDateChooser1.setDateFormatString("yyyy-MM-dd");
+        txtFechaC.setDateFormatString("yyyy-MM-dd");
 
-        lblCedulaM2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCedulaM2.setForeground(new java.awt.Color(255, 255, 255));
-        lblCedulaM2.setText("Fecha");
+        lblFechaC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblFechaC.setForeground(new java.awt.Color(255, 255, 255));
+        lblFechaC.setText("Fecha");
 
-        lblCedulaM3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCedulaM3.setForeground(new java.awt.Color(255, 255, 255));
-        lblCedulaM3.setText("Hora");
+        lblHoraC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHoraC.setForeground(new java.awt.Color(255, 255, 255));
+        lblHoraC.setText("Hora");
 
-        lblCedulaM4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCedulaM4.setForeground(new java.awt.Color(255, 255, 255));
-        lblCedulaM4.setText("Médico");
+        lblMedicoC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblMedicoC.setForeground(new java.awt.Color(255, 255, 255));
+        lblMedicoC.setText("Médico");
 
-        jButton1.setText("Crear");
+        btnCrear.setText("Crear");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 0, 0));
-        jButton2.setText("Eliminar");
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 0, 0));
+        btnEliminar.setText("Eliminar");
 
-        jButton3.setText("Editar");
-        jButton3.setMaximumSize(new java.awt.Dimension(78, 22));
-        jButton3.setMinimumSize(new java.awt.Dimension(78, 22));
+        btnEditar.setText("Editar");
+        btnEditar.setMaximumSize(new java.awt.Dimension(78, 22));
+        btnEditar.setMinimumSize(new java.awt.Dimension(78, 22));
 
         lblLogoM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/logo2.jpg"))); // NOI18N
 
@@ -97,65 +97,67 @@ public class RegistrarCitas extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblCedulaM2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCedulaM, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextField1)
-                        .addComponent(txtCedulaM))
-                    .addComponent(lblCedulaM3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblFechaC, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblIdC, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFechaC, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                        .addComponent(txtHoraC)
+                        .addComponent(txtIdC))
+                    .addComponent(lblHoraC, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                        .addComponent(lblLogoM)
-                        .addGap(206, 206, 206))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCedulaM1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCedulaM4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblPacienteC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcPacienteC, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMedicoC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcMedicoC, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(166, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                        .addComponent(lblLogoM)
+                        .addGap(205, 205, 205))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCedulaM)
-                    .addComponent(lblCedulaM1))
+                    .addComponent(lblIdC)
+                    .addComponent(lblPacienteC))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCedulaM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcPacienteC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCedulaM2)
+                        .addComponent(lblFechaC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFechaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCedulaM4)
+                        .addComponent(lblMedicoC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcMedicoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCedulaM3)
+                        .addComponent(lblHoraC)
                         .addGap(8, 8, 8)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblLogoM))
-                .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                        .addComponent(txtHoraC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblLogoM)
+                        .addGap(18, 18, 18)))
+                .addComponent(btnCrear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -175,20 +177,20 @@ public class RegistrarCitas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblCedulaM;
-    private javax.swing.JLabel lblCedulaM1;
-    private javax.swing.JLabel lblCedulaM2;
-    private javax.swing.JLabel lblCedulaM3;
-    private javax.swing.JLabel lblCedulaM4;
+    private javax.swing.JComboBox<String> jcMedicoC;
+    private javax.swing.JComboBox<String> jcPacienteC;
+    private javax.swing.JLabel lblFechaC;
+    private javax.swing.JLabel lblHoraC;
+    private javax.swing.JLabel lblIdC;
     private javax.swing.JLabel lblLogoM;
-    private javax.swing.JTextField txtCedulaM;
+    private javax.swing.JLabel lblMedicoC;
+    private javax.swing.JLabel lblPacienteC;
+    private com.toedter.calendar.JDateChooser txtFechaC;
+    private javax.swing.JFormattedTextField txtHoraC;
+    private javax.swing.JTextField txtIdC;
     // End of variables declaration//GEN-END:variables
 }
