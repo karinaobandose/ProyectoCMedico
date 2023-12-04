@@ -27,7 +27,7 @@ public class MPacienteDAO implements Dao<DTOPaciente> {
     }
 
     private void AgregarDeBaseDatos() {
-        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "emanuel12");
+        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "Joseph");
         Object[][] Lista = bd.mostrarTodosRegistros(Tabla);
         if (Lista != null) {
             for (Object[] fila : Lista) {

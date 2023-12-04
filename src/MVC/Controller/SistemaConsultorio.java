@@ -17,6 +17,7 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private ConsultarMedicos consultarMedicos;
     private RegistrarMedicos registrarMedicos;
     private RegistrarPacientes registrarPacientes;
+    private RegistrarCitas registrarCitas;
 
     /**
      * Creates new form SistemaConsultorio
@@ -28,12 +29,13 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         consultarMedicos = new ConsultarMedicos();
         registrarMedicos = new RegistrarMedicos();
         registrarPacientes = new RegistrarPacientes();
-
+        registrarCitas = new RegistrarCitas();
+        
         desktopPane.add(this.consultarMedicos);
         desktopPane.add(this.registrarMedicos);
         desktopPane.add(this.registrarPacientes);
+        desktopPane.add(this.registrarCitas);
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,6 +68,8 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         miRegistrarP = new javax.swing.JMenuItem();
         miConsultarP = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        miRegistrarC = new javax.swing.JMenuItem();
+        miConsultarC = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,6 +171,18 @@ public class SistemaConsultorio extends javax.swing.JFrame {
         menuBar.add(jMenu2);
 
         jMenu3.setText("Citas");
+
+        miRegistrarC.setText("Gestionar Citas");
+        miRegistrarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miRegistrarCActionPerformed(evt);
+            }
+        });
+        jMenu3.add(miRegistrarC);
+
+        miConsultarC.setText("Consultar Citas");
+        jMenu3.add(miConsultarC);
+
         menuBar.add(jMenu3);
 
         jMenu4.setText("Expedientes");
@@ -203,6 +219,10 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private void miRegistrarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRegistrarPActionPerformed
         registrarPacientes.setVisible(true);
     }//GEN-LAST:event_miRegistrarPActionPerformed
+
+    private void miRegistrarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRegistrarCActionPerformed
+        registrarCitas.setVisible(true);
+    }//GEN-LAST:event_miRegistrarCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,8 +275,10 @@ public class SistemaConsultorio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem miConsultarC;
     private javax.swing.JMenuItem miConsultarM;
     private javax.swing.JMenuItem miConsultarP;
+    private javax.swing.JMenuItem miRegistrarC;
     private javax.swing.JMenuItem miRegistrarM;
     private javax.swing.JMenuItem miRegistrarP;
     private javax.swing.JMenuItem openMenuItem;

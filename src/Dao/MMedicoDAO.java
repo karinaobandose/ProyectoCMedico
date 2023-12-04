@@ -27,7 +27,7 @@ public class MMedicoDAO implements Dao<DTOMedico> {
     }
 
     private void AgregarDeBaseDatos() {
-        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "emanuel12");
+        PlatillaBD bd = new PlatillaBD("127.0.0.1", "consultorio", "root", "Joseph");
         Object[][] Lista = bd.mostrarTodosRegistros(Tabla);
         if (Lista != null) {
             for (Object[] fila : Lista) {
@@ -90,7 +90,7 @@ public class MMedicoDAO implements Dao<DTOMedico> {
         String setValuesActualizar = "Nombre = ?, FechaN = ?, Telefono = ?, Correo = ?, Codigo = ?, Especialidad = ?, Salario = ?";
         String condicionActualizar = "Cedula = ?";
         Object[] Parametros = {obj.getNombre(), obj.getFechaNacimiento(), obj.getTelefono(),
-             obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario(), obj.getNumeroCedula()};
+            obj.getCorreo(), obj.getCodigo(), obj.getEspecialidad(), obj.getSalario(), obj.getNumeroCedula()};
         boolean resultado = BaseDatos.actualizarRegistro(Tabla, setValuesActualizar, condicionActualizar, Parametros);
 //        return this.Agregar(obj);
         return resultado;
@@ -102,7 +102,7 @@ public class MMedicoDAO implements Dao<DTOMedico> {
         Object[] Parametro = {obj.getNumeroCedula()};
         String x = String.valueOf(obj.getNumeroCedula());
         System.out.println(ListaMedicos.size());
-        
+
 //        if (ListaMedicos.size()<1) {
 //            
 //        }
@@ -110,11 +110,10 @@ public class MMedicoDAO implements Dao<DTOMedico> {
         if (resultado) {
             ListaMedicos.remove(x);
             return true;
-        }else{
+        } else {
             return false;
         }
-        
-        
+
     }
 
 }
