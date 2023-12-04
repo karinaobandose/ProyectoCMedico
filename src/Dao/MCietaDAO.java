@@ -24,6 +24,7 @@ public class MCietaDAO implements Dao<DTOCita> {
     private static String Tabla = "citas";
     private String columnasInsercion = "";
     private String valoresInsercion = "";
+    private int Ultimo;
 
     public MCietaDAO() {
         ListaCitas = new HashMap();
@@ -35,8 +36,9 @@ public class MCietaDAO implements Dao<DTOCita> {
         Object[][] Lista = bd.mostrarTodosRegistros(Tabla);
         if (Lista != null) {
             for (Object[] fila : Lista) {
-                DTOCita DTOCita = new DTOCita(fila);
-                ListaCitas.put(String.valueOf(DTOCita.getId()), DTOCita);
+                DTOCita Cita = new DTOCita(fila);
+                ListaCitas.put(String.valueOf(Cita.getId()), Cita);
+                Ultimo = Cita.getId();
             }
         }
 
@@ -44,6 +46,9 @@ public class MCietaDAO implements Dao<DTOCita> {
 
     @Override
     public boolean Agregar(DTOCita obj, PlatillaBD BaseDatos) {
+
+        System.out.println("AGREGAR DEL DAO");
+
         columnasInsercion = "Fecha, Hora, CedulaPaciente, CedulaMedico";
         valoresInsercion = "?,?,?,?";
         if (obj == null) {
@@ -52,22 +57,24 @@ public class MCietaDAO implements Dao<DTOCita> {
 
         System.out.println(obj.getFecha());
         System.out.println(obj.getHora());
-        System.out.println(obj.getPaciente().getNumeroCedula());
-        System.out.println(obj.getMedico().getNumeroCedula());
+        System.out.println(obj.getPaciente());
+        System.out.println(obj.getMedico());
 
-        Object[] Parametros = {obj.getFecha(), obj.getHora()+":00", obj.getPaciente().getNumeroCedula(), obj.getMedico().getNumeroCedula()};
+        Object[] Parametros = {obj.getFecha(), obj.getHora() + ":00", obj.getPaciente(), obj.getMedico()};
         boolean resultado;
         System.out.println("EL RESULTADO DEL LEER ES" + Leer(String.valueOf(obj.getId()), BaseDatos));
 
         if (Leer(String.valueOf(obj.getId()), BaseDatos) == null) {
             resultado = BaseDatos.insertarRegistro(Tabla, columnasInsercion, valoresInsercion, Parametros);
-            String x = String.valueOf(obj.getId());
-            ListaCitas.put(x, obj);
+            Ultimo++;
+            System.out.println(Ultimo);
+            obj.setId(Ultimo);
+            ListaCitas.put(String.valueOf(Ultimo), obj);
             System.out.println("Registro Agregado correctamente, dentro de la base de datos");
             return resultado;
         } else if (Leer(String.valueOf(obj.getId()), BaseDatos) instanceof DTOCita) {
             String x = String.valueOf(obj.getId());
-            ListaCitas.put(x, obj);
+            ListaCitas.put(String.valueOf(Ultimo), obj);
             System.out.println("Registro Agregado correctamente");
             return true;
         } else {
@@ -98,10 +105,11 @@ public class MCietaDAO implements Dao<DTOCita> {
     public boolean Actualizar(DTOCita obj, PlatillaBD BaseDatos) {
         String setValuesActualizar = "Fecha = ?, Hora= ?, CedulaPaciente= ?, CedulaMedico= ?";
         String condicionActualizar = "id = ?";
-        Object[] Parametros = {obj.getFecha(), obj.getHora(), obj.getPaciente().getNumeroCedula(),
-            obj.getMedico().getNumeroCedula(), obj.getId()};
+        Object[] Parametros = {obj.getFecha(), obj.getHora() + ":00", obj.getPaciente(),
+            obj.getMedico(), obj.getId()};
         boolean resultado = BaseDatos.actualizarRegistro(Tabla, setValuesActualizar, condicionActualizar, Parametros);
 //        return this.Agregar(obj);
+        AgregarDeBaseDatos();
         return resultado;
     }
 
@@ -110,7 +118,6 @@ public class MCietaDAO implements Dao<DTOCita> {
         String condicionEliminar = "id = ?";
         Object[] Parametro = {obj.getId()};
         String x = String.valueOf(obj.getId());
-        System.out.println(ListaCitas.size());
 
 //        if (ListaMedicos.size()<1) {
 //            
